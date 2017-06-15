@@ -1,0 +1,56 @@
+{
+	"name": "codekandis/pharty",
+	"description": "Pharty is a small and lightweight micro routing framework.",
+	"keywords": [
+		"codekandis",
+		"pharty",
+		"php",
+		"micro",
+		"routing",
+		"framework"
+	],
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Christian Ramelow",
+			"email": "info@codekandis.net",
+			"homepage": "http://codekandis.net",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "info@codekandis.net",
+		"issues": "https://github.com/codekandis/pharty/issues",
+		"docs": "https://github.com/codekandis/pharty/master/README.md",
+		"source": "https://github.com/codekandis/pharty/tree/master"
+	},
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"roave/security-advisories": "dev-master",
+		"sensiolabs/security-checker": "^6",
+		"codekandis/phpunit": "^1"
+	},
+	"autoload": {
+		"psr-4": {
+			"CodeKandis\\Pharty\\": [
+				"src/"
+			]
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"CodeKandis\\Pharty\\Tests\\": [
+				"tests/"
+			]
+		}
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"[ ${COMPOSER_DEV_MODE} -eq 0 ] || vendor/bin/security-checker security:check composer.lock"
+		]
+	}
+}
