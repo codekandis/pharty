@@ -28,4 +28,16 @@ interface EnvironmentInterface
 	 * @return AuthenticatorInterface The authenticator of the application.
 	 */
 	public function getAuthenticator(): AuthenticatorInterface;
+
+	/**
+	 * Gets the pre-execution controllers of the application.
+	 * @return ControllerInterface[] The pre-execution controllers of the application.
+	 */
+	public function getPreExecutionControllers(): array;
+
+	/**
+	 * Gets the post-execution controllers of the application.
+	 * @return ControllerInterface[] The post-execution controllers of the application.
+	 */
+	public function getPostExecutionControllers(): array;
 }
