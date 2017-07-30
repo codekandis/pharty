@@ -6,6 +6,7 @@ use CodeKandis\Pharty\Data\ArrayKeyNotFoundException;
 use CodeKandis\Pharty\Http\HttpData;
 use CodeKandis\Pharty\Http\HttpDataInterface;
 use CodeKandis\Pharty\Security\AuthenticatorInterface;
+use function is_array;
 use function is_string;
 use function sprintf;
 
@@ -47,10 +48,40 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	private AuthenticatorInterface $authenticator;
 
 	/**
+	 * Stores the pre-execution controllers of the application.
+	 * @var ControllerInterface[]
+	 */
+	private array $preExecutionControllers;
+
+	/**
+	 * Stores the post-execution controllers of the application.
+	 * @var ControllerInterface[]
+	 */
+	private array $postExecutionControllers;
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getPreExecutionControllers(): array
+	{
+		return $this->preExecutionControllers;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getPostExecutionControllers(): array
+	{
+		return $this->postExecutionControllers;
+	}
+
+	/**
 	 * Constructor method.
 	 * @param array $configuration The application environment configuration.
 	 * @throws EnvironmentConfigurationException The configuration `applicationName` is missing.
 	 * @throws EnvironmentConfigurationException The configuration type of `applicationName` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing` is invalid.
 	 */
 	public function __construct( array $configuration )
 	{
@@ -81,6 +112,33 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 			);
 		}
 		$this->applicationName = $applicationName;
+		try
+		{
+			$routingConfiguration = $configurationAccessor->get( 'routing' );
+		}
+		catch ( ArrayKeyNotFoundException $exception )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_MISSING_CONFIGURATION,
+					'routing'
+				),
+				0,
+				$exception
+			);
+		}
+		if ( false === is_array( $routingConfiguration ) )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_INVALID_CONFIGURATION_TYPE,
+					'routing',
+					'array'
+				)
+			);
+		}
+		$this->initializePreExecutionControllers( $routingConfiguration );
+		$this->initializePostExecutionControllers( $routingConfiguration );
 	}
 
 	/**
@@ -98,6 +156,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	{
 		return $this->httpData ?? $this->httpData = new HttpData();
 	}
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -113,5 +172,227 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	protected function setAuthenticator( AuthenticatorInterface $authenticator ): void
 	{
 		$this->authenticator = $authenticator;
+	}
+
+	/**
+	 * Initializes the pre-execution controllers of the application.
+	 * @param array $routingConfiguration The routing configuration of the application.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ preExecutionControllers ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ preExecutionControllers ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ preExecutionControllers ][ ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ preExecutionControllers ][ ][ class ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ preExecutionControllers ][ ][ class ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ preExecutionControllers ][ ][ data ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ preExecutionControllers ][ ][ data ]` is invalid.
+	 */
+	private function initializePreExecutionControllers( array $routingConfiguration ): void
+	{
+		try
+		{
+			$controllersConfiguration = ( new ArrayAccessor( $routingConfiguration ) )
+				->get( 'preExecutionControllers' );
+		}
+		catch ( ArrayKeyNotFoundException $exception )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_MISSING_CONFIGURATION,
+					'routing[ preExecutionControllers ]'
+				),
+				0,
+				$exception
+			);
+		}
+		if ( false === is_array( $controllersConfiguration ) )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_INVALID_CONFIGURATION_TYPE,
+					'routing[ preExecutionControllers ]',
+					'array'
+				)
+			);
+		}
+		$this->preExecutionControllers = [];
+		/* @var array $controllersConfiguration */
+		foreach ( $controllersConfiguration as $controllerConfigurationFetched )
+		{
+			if ( false === is_array( $controllerConfigurationFetched ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ preExecutionControllers ][ ]',
+						'array'
+					)
+				);
+			}
+			$controllerConfigurationAccessor = new ArrayAccessor( $controllerConfigurationFetched );
+			try
+			{
+				$controllerClass = $controllerConfigurationAccessor->get( 'class' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ preExecutionControllers ][ ][ class ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_string( $controllerClass ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ preExecutionControllers ][ ][ class ]',
+						'string'
+					)
+				);
+			}
+			try
+			{
+				$controllerData = $controllerConfigurationAccessor->get( 'data' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ preExecutionControllers ][ ][ data ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_array( $controllerData ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ preExecutionControllers ][ ][ data ]',
+						'array'
+					)
+				);
+			}
+			$this->preExecutionControllers[] = new $controllerClass(
+				$this,
+				new ArrayAccessor( $controllerData )
+			);
+		}
+	}
+
+	/**
+	 * Initializes the pre-execution controllers of the application.
+	 * @param array $routingConfiguration The routing configuration of the application.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ postExecutionControllers ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ postExecutionControllers ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ postExecutionControllers ][ ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ postExecutionControllers ][ ][ class ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ postExecutionControllers ][ ][ class ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ postExecutionControllers ][ ][ data ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ postExecutionControllers ][ ][ data ]` is invalid.
+	 */
+	private function initializePostExecutionControllers( array $routingConfiguration ): void
+	{
+		try
+		{
+			$controllersConfiguration = ( new ArrayAccessor( $routingConfiguration ) )
+				->get( 'postExecutionControllers' );
+		}
+		catch ( ArrayKeyNotFoundException $exception )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_MISSING_CONFIGURATION,
+					'routing[ postExecutionControllers ]'
+				),
+				0,
+				$exception
+			);
+		}
+		if ( false === is_array( $controllersConfiguration ) )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_INVALID_CONFIGURATION_TYPE,
+					'routing[ postExecutionControllers ]',
+					'array'
+				)
+			);
+		}
+		$this->postExecutionControllers = [];
+		/* @var array $controllersConfiguration */
+		foreach ( $controllersConfiguration as $controllerConfigurationFetched )
+		{
+			if ( false === is_array( $controllerConfigurationFetched ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ postExecutionControllers ][ ]',
+						'array'
+					)
+				);
+			}
+			$controllerConfigurationAccessor = new ArrayAccessor( $controllerConfigurationFetched );
+			try
+			{
+				$controllerClass = $controllerConfigurationAccessor->get( 'class' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ postExecutionControllers ][ ][ class ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_string( $controllerClass ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ postExecutionControllers ][ ][ class ]',
+						'string'
+					)
+				);
+			}
+			try
+			{
+				$controllerData = $controllerConfigurationAccessor->get( 'data' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ postExecutionControllers ][ ][ data ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_array( $controllerData ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ postExecutionControllers ][ ][ data ]',
+						'array'
+					)
+				);
+			}
+			$this->postExecutionControllers[] = new $controllerClass(
+				$this,
+				new ArrayAccessor( $controllerData )
+			);
+		}
 	}
 }
