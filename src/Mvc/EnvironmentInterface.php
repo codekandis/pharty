@@ -2,6 +2,7 @@
 namespace CodeKandis\Pharty\Mvc;
 
 use CodeKandis\Pharty\Http\HttpDataInterface;
+use CodeKandis\Pharty\Security\AuthenticatorInterface;
 
 /**
  * Represents the interface of all application environment classes.
@@ -21,4 +22,10 @@ interface EnvironmentInterface
 	 * @return HttpDataInterface The HTTP data of the request.
 	 */
 	public function getHttpData(): HttpDataInterface;
+
+	/**
+	 * Gets the authenticator of the application.
+	 * @return AuthenticatorInterface The authenticator of the application.
+	 */
+	public function getAuthenticator(): AuthenticatorInterface;
 }
