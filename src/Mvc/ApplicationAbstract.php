@@ -41,9 +41,37 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	}
 
 	/**
+	 * Executes all pre-execution controllers.
+	 * @return bool True if the routed controller can be executed, false otherwise.
+	 */
+	private function executePreExecutionControllers(): bool
+	{
+		$result = true;
+		foreach ( $this->getEnvironment()->getPreExecutionControllers() as $preExecutionControllerFetched )
+		{
+			$result = $result && $preExecutionControllerFetched->execute();
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Executes all post-execution controllers.
+	 */
+	private function executePostExecutionControllers(): void
+	{
+		foreach ( $this->getEnvironment()->getPostExecutionControllers() as $postExecutionControllerFetched )
+		{
+			$postExecutionControllerFetched->execute();
+		}
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function execute(): void
 	{
+		$result = $this->executePreExecutionControllers();
+		$this->executePostExecutionControllers();
 	}
 }
