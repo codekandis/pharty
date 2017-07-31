@@ -5,6 +5,7 @@ use CodeKandis\Pharty\Data\ArrayAccessor;
 use CodeKandis\Pharty\Data\ArrayKeyNotFoundException;
 use CodeKandis\Pharty\Http\HttpData;
 use CodeKandis\Pharty\Http\HttpDataInterface;
+use CodeKandis\Pharty\Security\AuthenticatorInterface;
 use function is_string;
 use function sprintf;
 
@@ -38,6 +39,12 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	 * @var HttpDataInterface
 	 */
 	private HttpDataInterface $httpData;
+
+	/**
+	 * Stores the authenticator of the application.
+	 * @var AuthenticatorInterface
+	 */
+	private AuthenticatorInterface $authenticator;
 
 	/**
 	 * Constructor method.
@@ -90,5 +97,21 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	public function getHttpData(): HttpDataInterface
 	{
 		return $this->httpData ?? $this->httpData = new HttpData();
+	}
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getAuthenticator(): AuthenticatorInterface
+	{
+		return $this->authenticator;
+	}
+
+	/**
+	 * Sets the authenticator of the application.
+	 * @param AuthenticatorInterface $authenticator The authenticator of the application.
+	 */
+	protected function setAuthenticator( AuthenticatorInterface $authenticator ): void
+	{
+		$this->authenticator = $authenticator;
 	}
 }
