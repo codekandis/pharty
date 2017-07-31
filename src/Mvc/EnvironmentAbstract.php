@@ -60,6 +60,12 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	private array $postExecutionControllers;
 
 	/**
+	 * Stores the router of the application.
+	 * @var RouterInterface
+	 */
+	private RouterInterface $router;
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function getPreExecutionControllers(): array
@@ -172,6 +178,23 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	protected function setAuthenticator( AuthenticatorInterface $authenticator ): void
 	{
 		$this->authenticator = $authenticator;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getRouter(): RouterInterface
+	{
+		return $this->router;
+	}
+
+	/**
+	 * Sets the router of the application.
+	 * @param RouterInterface $router The router of the application.
+	 */
+	protected function setRouter( RouterInterface $router ): void
+	{
+		$this->router = $router;
 	}
 
 	/**
