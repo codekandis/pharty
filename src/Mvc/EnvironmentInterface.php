@@ -40,4 +40,10 @@ interface EnvironmentInterface
 	 * @return ControllerInterface[] The post-execution controllers of the application.
 	 */
 	public function getPostExecutionControllers(): array;
+
+	/**
+	 * Gets the router of the application.
+	 * @return RouterInterface The router of the application.
+	 */
+	public function getRouter(): RouterInterface;
 }
