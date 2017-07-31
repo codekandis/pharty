@@ -1,6 +1,8 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Pharty\Mvc;
 
+use CodeKandis\Pharty\Http\HttpMethod;
+
 /**
  * Represents the base class of all applications.
  * @package codekandis/pharty
@@ -67,11 +69,30 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	}
 
 	/**
+	 * Executes a routed controller.
+	 */
+	private function executeRoutedController(): void
+	{
+		$requestMethod = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_METHOD', HttpMethod::GET );
+		$requestUri    = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_URI', '/' );
+		/* @var ResolvedRouteInterface $resolvedRoute */
+		$resolvedRoute   = $this->getEnvironment()->getRouter()->resolveRoute( $requestMethod, $requestUri );
+		$controllerClass = $resolvedRoute->getRoute()->getClass();
+		/* @var ControllerInterface $controller */
+		$controller = new $controllerClass( $this->getEnvironment(), $resolvedRoute->getData() );
+		$controller->execute();
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function execute(): void
 	{
 		$result = $this->executePreExecutionControllers();
+		if ( true === $result )
+		{
+			$this->executeRoutedController();
+		}
 		$this->executePostExecutionControllers();
 	}
 }
