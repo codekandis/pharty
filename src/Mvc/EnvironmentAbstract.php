@@ -145,6 +145,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 		}
 		$this->initializePreExecutionControllers( $routingConfiguration );
 		$this->initializePostExecutionControllers( $routingConfiguration );
+		$this->initializeRouter( $routingConfiguration );
 	}
 
 	/**
@@ -417,5 +418,166 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 				new ArrayAccessor( $controllerData )
 			);
 		}
+	}
+
+	/**
+	 * Initializes the router.
+	 * @param array $routingConfiguration The routing configuration.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ routes ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ routes ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ routes ][ ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ routes ][ ][ pattern ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ routes ][ ][ pattern ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ routes ][ ][ class ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ routes ][ ][ class ]` is invalid.
+	 * @throws EnvironmentConfigurationException The configuration `routing[ routes ][ ][ data ]` is missing.
+	 * @throws EnvironmentConfigurationException The configuration type of `routing[ routes ][ ][ data ]` is invalid.
+	 */
+	private function initializeRouter( array $routingConfiguration ): void
+	{
+		try
+		{
+			$routesConfiguration = ( new ArrayAccessor( $routingConfiguration ) )
+				->get( 'routes' );
+		}
+		catch ( ArrayKeyNotFoundException $exception )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_MISSING_CONFIGURATION,
+					'routing[ routes ]'
+				),
+				0,
+				$exception
+			);
+		}
+		if ( false === is_array( $routesConfiguration ) )
+		{
+			throw new EnvironmentConfigurationException(
+				sprintf(
+					static::ERROR_INVALID_CONFIGURATION_TYPE,
+					'routing[ routes ]',
+					'array'
+				)
+			);
+		}
+		$routes = [];
+		/* @var array $routesConfiguration */
+		foreach ( $routesConfiguration as $routeConfigurationFetched )
+		{
+			if ( false === is_array( $routeConfigurationFetched ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ routes ][ ]',
+						'array'
+					)
+				);
+			}
+			$routeConfigurationAccessor = new ArrayAccessor( $routeConfigurationFetched );
+			try
+			{
+				$pattern = $routeConfigurationAccessor->get( 'pattern' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ routes ][ ][ pattern ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_string( $pattern ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ routes ][ ][ pattern ]',
+						'string'
+					)
+				);
+			}
+			try
+			{
+				$controllerHttpMethod = $routeConfigurationAccessor->get( 'httpMethod' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ routes ][ ][ httpMethod ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_string( $controllerHttpMethod ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ routes ][ ][ httpMethod ]',
+						'string'
+					)
+				);
+			}
+			try
+			{
+				$controllerClass = $routeConfigurationAccessor->get( 'class' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ routes ][ ][ class ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_string( $controllerClass ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ routes ][ ][ class ]',
+						'string'
+					)
+				);
+			}
+			try
+			{
+				$controllerData = $routeConfigurationAccessor->get( 'data' );
+			}
+			catch ( ArrayKeyNotFoundException $exception )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_MISSING_CONFIGURATION,
+						'routing[ routes ][ ][ data ]'
+					),
+					0,
+					$exception
+				);
+			}
+			if ( false === is_array( $controllerData ) )
+			{
+				throw new EnvironmentConfigurationException(
+					sprintf(
+						static::ERROR_INVALID_CONFIGURATION_TYPE,
+						'routing[ routes ][ ][ data ]',
+						'array'
+					)
+				);
+			}
+			$routes[] = new Route( $pattern, $controllerHttpMethod, $controllerClass, $controllerData );
+		}
+		$this->setRouter( new Router( $routes ) );
 	}
 }
