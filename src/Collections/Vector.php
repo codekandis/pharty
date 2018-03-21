@@ -2,6 +2,8 @@
 namespace CodeKandis\Pharty\Collections;
 
 use Closure;
+use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
+use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
 use function array_search;
 use function array_values;
 use function count;
@@ -12,6 +14,7 @@ use function sprintf;
  * Represents a list of elements. A vector contains non-unique elements.
  * @package codekandis/pharty
  * @author Christian Ramelow <info@codekandis.net>
+ * @SerializationContractAttribute(serializeSinglePropertyOnly=true)
  */
 class Vector implements ListInterface
 {
@@ -42,8 +45,9 @@ class Vector implements ListInterface
 	/**
 	 * Stores the internal list of elements.
 	 * @var array
+	 * @SerializationPropertyAttribute()
 	 */
-	private array $elements;
+	protected array $elements;
 
 	/**
 	 * Constructor method.
