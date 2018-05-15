@@ -3,6 +3,8 @@ namespace CodeKandis\Pharty\Mvc;
 
 use CodeKandis\Pharty\Data\ArrayAccessor;
 use CodeKandis\Pharty\Data\ArrayKeyNotFoundException;
+use CodeKandis\Pharty\Http\HttpData;
+use CodeKandis\Pharty\Http\HttpDataInterface;
 use function is_string;
 use function sprintf;
 
@@ -30,6 +32,12 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	 * @var string
 	 */
 	private string $applicationName;
+
+	/**
+	 * Stores the HTTP data of the request.
+	 * @var HttpDataInterface
+	 */
+	private HttpDataInterface $httpData;
 
 	/**
 	 * Constructor method.
@@ -74,5 +82,13 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	public function getApplicationName(): string
 	{
 		return $this->applicationName;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getHttpData(): HttpDataInterface
+	{
+		return $this->httpData ?? $this->httpData = new HttpData();
 	}
 }
