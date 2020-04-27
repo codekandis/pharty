@@ -2,6 +2,8 @@
 namespace CodeKandis\Pharty\Collections;
 
 use Closure;
+use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
+use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
 use function count;
 use function in_array;
 use function sprintf;
@@ -10,6 +12,7 @@ use function sprintf;
  * Represents an immutable list of various elements. A set contains elements strictly unique by their type and their value.
  * @package codekandis/pharty
  * @author Christian Ramelow <info@codekandis.net>
+ * @SerializationContractAttribute(serializeSinglePropertyOnly=true)
  */
 class ImmutableSet implements ImmutableListInterface
 {
@@ -40,8 +43,10 @@ class ImmutableSet implements ImmutableListInterface
 	/**
 	 * Stores the internal list of elements.
 	 * @var array
+	 * @SerializationPropertyAttribute()
+	 *
 	 */
-	private array $elements;
+	protected array $elements;
 
 	/**
 	 * Constructor method.

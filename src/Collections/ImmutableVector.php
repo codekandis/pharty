@@ -2,6 +2,8 @@
 namespace CodeKandis\Pharty\Collections;
 
 use Closure;
+use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
+use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
 use function array_values;
 use function count;
 use function in_array;
@@ -11,6 +13,7 @@ use function sprintf;
  * Represents an immutable list of elements. A vector contains non unique elements.
  * @package codekandis/pharty
  * @author Christian Ramelow <info@codekandis.net>
+ * @SerializationContractAttribute(serializeSinglePropertyOnly=true)
  */
 class ImmutableVector implements ImmutableListInterface
 {
@@ -35,8 +38,9 @@ class ImmutableVector implements ImmutableListInterface
 	/**
 	 * Stores the internal list of elements.
 	 * @var array
+	 * @SerializationPropertyAttribute()
 	 */
-	private array $elements;
+	protected array $elements;
 
 	/**
 	 * Constructor method.
