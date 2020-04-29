@@ -27,7 +27,10 @@
 		"source": "https://github.com/codekandis/pharty/tree/master"
 	},
 	"require": {
-		"php": ">=7.4"
+		"php": ">=7.4",
+		"ext-fileinfo": "*",
+		"doctrine/annotations": "^1",
+		"codekandis/json-codec": "^1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-master",
