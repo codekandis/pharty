@@ -19,19 +19,19 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	 * Represents the error message if the directory does not exist.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
+	protected const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if the directory is not readable.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_IS_NOT_READABLE = 'The directory \'%s\' is not readable.';
+	protected const ERROR_DIRECTORY_IS_NOT_READABLE = 'The directory \'%s\' is not readable.';
 
 	/**
 	 * Represents the error message if the directory is not deletable.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_IS_NOT_DELETABLE = 'The directory \'%s\' is not deletable.';
+	protected const ERROR_DIRECTORY_IS_NOT_DELETABLE = 'The directory \'%s\' is not deletable.';
 
 	/**
 	 * {@inheritdoc}

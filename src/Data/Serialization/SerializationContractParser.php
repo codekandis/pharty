@@ -21,25 +21,25 @@ class SerializationContractParser implements SerializationContractParserInterfac
 	 * Represents the error message if a serialization contract does not exist.
 	 * @var string
 	 */
-	private const ERROR_SERIALIZATION_CONTRACT_DOES_NOT_EXIST = 'The serialization contract \'%s\' does not exist.';
+	protected const ERROR_SERIALIZATION_CONTRACT_DOES_NOT_EXIST = 'The serialization contract \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if a class ist not marked as a serialization contract.
 	 * @var string
 	 */
-	private const ERROR_CLASS_IS_NOT_A_SERIALIZATION_CONTRACT = 'The class \'%s\' is not marked as a serialization contract.';
+	protected const ERROR_CLASS_IS_NOT_A_SERIALIZATION_CONTRACT = 'The class \'%s\' is not marked as a serialization contract.';
 
 	/**
 	 * Represents the error message if a class has not properties marked for serialization.
 	 * @var string
 	 */
-	private const ERROR_CLASS_HAS_NO_SERIALIZABLE_PROPERTIES = 'The serialization contract \'%s\' has no properties marked for serialization.';
+	protected const ERROR_CLASS_HAS_NO_SERIALIZABLE_PROPERTIES = 'The serialization contract \'%s\' has no properties marked for serialization.';
 
 	/**
 	 * Represents the error message if a serialization contract is marked as serialize single property only but has more than one properties marked for serialization.
 	 * @var string
 	 */
-	private const ERROR_SINGLE_PROPERTY_SERIALIZATION_CONTRACT_HAS_TOO_MUCH_SERIALIZABLE_PROPERTIES = 'The serialization contract \'%s\' is marked as serialize single property only but has more than one properties marked for serialization.';
+	protected const ERROR_SINGLE_PROPERTY_SERIALIZATION_CONTRACT_HAS_TOO_MUCH_SERIALIZABLE_PROPERTIES = 'The serialization contract \'%s\' is marked as serialize single property only but has more than one properties marked for serialization.';
 
 	/**
 	 * Stores the class to parse.

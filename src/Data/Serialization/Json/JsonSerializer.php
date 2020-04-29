@@ -33,13 +33,13 @@ class JsonSerializer implements JsonSerializerInterface
 	 * Represents the error message if a serialization failed.
 	 * @var string
 	 */
-	private const ERROR_SERIALIZATION_FAILED = 'The serialization failed.';
+	protected const ERROR_SERIALIZATION_FAILED = 'The serialization failed.';
 
 	/**
 	 * Represents the error message if a deserialization failed.
 	 * @var string
 	 */
-	private const ERROR_DESERIALIZATION_FAILED = 'The deserialization failed.';
+	protected const ERROR_DESERIALIZATION_FAILED = 'The deserialization failed.';
 
 	/**
 	 * Determines if an array is an associative array.

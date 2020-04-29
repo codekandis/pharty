@@ -17,7 +17,7 @@ class SessionAuthenticator implements AuthenticatorInterface
 	 * Represents the error message if a session key does not exist.
 	 * @var string
 	 */
-	private const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist in the session.';
+	protected const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist in the session.';
 
 	/**
 	 * Stores the session key storing if the client has been authenticated.

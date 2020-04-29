@@ -16,6 +16,12 @@ use function sprintf;
 class AnnotationController implements AnnotationControllerInterface
 {
 	/**
+	 * Represents the error message if the annotation reader instantiation has been failed.
+	 * @var string
+	 */
+	protected const ERROR_ANNOTATION_READER_INSTANTIATION_FAILED = '[%s] %s';
+
+	/**
 	 * Stores the Doctrine annotation reader.
 	 * @var AnnotationReader
 	 */
@@ -53,7 +59,7 @@ class AnnotationController implements AnnotationControllerInterface
 		{
 			throw new AnnotationReaderInstantiationFailedException(
 				sprintf(
-					'[%s] %s',
+					static::ERROR_ANNOTATION_READER_INSTANTIATION_FAILED,
 					get_class( $exception ),
 					$exception->getMessage()
 				),
