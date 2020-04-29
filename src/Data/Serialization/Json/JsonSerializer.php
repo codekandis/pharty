@@ -1,6 +1,9 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Pharty\Data\Serialization\Json;
 
+use CodeKandis\JsonCodec\JsonDecoder;
+use CodeKandis\JsonCodec\JsonEncoder;
+use CodeKandis\JsonCodec\JsonEncoderOptions;
 use CodeKandis\Pharty\Annotations\AnnotationReaderInstantiationFailedException;
 use CodeKandis\Pharty\Data\Serialization\DeserializationFailedException;
 use CodeKandis\Pharty\Data\Serialization\NotASerializationContractException;
@@ -10,6 +13,7 @@ use CodeKandis\Pharty\Data\Serialization\SerializationContractHasTooMuchProperti
 use CodeKandis\Pharty\Data\Serialization\SerializationContractNotFoundException;
 use CodeKandis\Pharty\Data\Serialization\SerializationContractParser;
 use CodeKandis\Pharty\Data\Serialization\SerializationFailedException;
+use JsonException;
 use stdClass;
 use function array_filter;
 use function array_keys;
@@ -17,10 +21,6 @@ use function count;
 use function get_class;
 use function is_array;
 use function is_object;
-use function json_decode;
-use function json_encode;
-use const JSON_PRESERVE_ZERO_FRACTION;
-use const JSON_THROW_ON_ERROR;
 
 /**
  * Represents the interface of all JSON serializers.
@@ -202,18 +202,26 @@ class JsonSerializer implements JsonSerializerInterface
 	{
 		try
 		{
-			return json_encode(
-				$this->transformObject( $data ),
-				JSON_PRESERVE_ZERO_FRACTION
-			);
+			return ( new JsonEncoder() )
+				->encode(
+					$this->transformObject( $data ),
+					new JsonEncoderOptions(
+						JsonEncoderOptions::PRESERVE_ZERO_FRACTION
+					)
+				);
 		}
 		catch ( SerializationContractNotFoundException
 		| NotASerializationContractException
 		| AnnotationReaderInstantiationFailedException
 		| SerializationContractHasNoPropertiesException
-		| SerializationContractHasTooMuchPropertiesException $exception )
+		| SerializationContractHasTooMuchPropertiesException
+		| JsonException $exception )
 		{
-			throw new SerializationFailedException( static::ERROR_SERIALIZATION_FAILED );
+			throw new SerializationFailedException(
+				static::ERROR_SERIALIZATION_FAILED,
+				0,
+				$exception
+			);
 		}
 	}
 
@@ -321,7 +329,8 @@ class JsonSerializer implements JsonSerializerInterface
 		try
 		{
 			return $this->retransformObject(
-				json_decode( $data, false, 512, JSON_THROW_ON_ERROR ),
+				( new JsonDecoder() )
+					->decode( $data ),
 				$class
 			);
 		}
@@ -329,9 +338,14 @@ class JsonSerializer implements JsonSerializerInterface
 		| NotASerializationContractException
 		| AnnotationReaderInstantiationFailedException
 		| SerializationContractHasNoPropertiesException
-		| SerializationContractHasTooMuchPropertiesException $exception )
+		| SerializationContractHasTooMuchPropertiesException
+		| JsonException $exception )
 		{
-			throw new DeserializationFailedException( static::ERROR_DESERIALIZATION_FAILED );
+			throw new DeserializationFailedException(
+				static::ERROR_DESERIALIZATION_FAILED,
+				0,
+				$exception
+			);
 		}
 	}
 }
