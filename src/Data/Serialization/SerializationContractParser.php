@@ -113,7 +113,9 @@ class SerializationContractParser implements SerializationContractParserInterfac
 				)
 			);
 		}
-		/* @var SerializationContractAttribute $classAttribute */
+		/**
+		 * @var SerializationContractAttribute $classAttribute
+		 */
 		$classAttribute = $this->getAnnotationReader()->getClassAnnotation( $reflectedClass, SerializationContractAttribute::class );
 		if ( null === $classAttribute )
 		{
@@ -143,7 +145,9 @@ class SerializationContractParser implements SerializationContractParserInterfac
 			$propertyAttribute = $this->getAnnotationReader()->getPropertyAnnotation( $reflectedPropertyFetched, SerializationPropertyAttribute::class );
 			if ( null !== $propertyAttribute )
 			{
-				/* @var SerializationPropertyAttribute $propertyAttribute */
+				/**
+				 * @var SerializationPropertyAttribute $propertyAttribute
+				 */
 				if ( '' === $propertyAttribute->name )
 				{
 					$propertyAttribute->name = $reflectedPropertyFetched->name;

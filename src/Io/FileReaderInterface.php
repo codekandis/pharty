@@ -17,9 +17,7 @@ interface FileReaderInterface
 	public function readAll(): string;
 
 	/**
-	 * Reads the content of the file converted by the set file reader
-	 * content converter if one has been registered, the unconverted
-	 * content otherwise.
+	 * Reads the content of the file converted by the set file reader content converter if one has been registered, the unconverted content otherwise.
 	 * @return mixed The content of the file converted by the registered converter if one has been registered, the unconverted content otherwise.
 	 * @throws DirectoryNotReadableException The directory of the file is not readable.
 	 * @throws FileNotReadableException The file is not readable.

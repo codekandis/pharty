@@ -111,7 +111,9 @@ class Layout implements LayoutInterface
 		{
 			return $value->getGroupName() === $groupName;
 		};
-		/* @var ViewInterface $viewFetched */
+		/**
+		 * @var ViewInterface $viewFetched
+		 */
 		foreach ( $this->views->findAll( $predicate ) as $viewFetched )
 		{
 			$groupContents->addContainer( $viewFetched->render() );
