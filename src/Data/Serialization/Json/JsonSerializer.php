@@ -147,7 +147,9 @@ class JsonSerializer implements JsonSerializerInterface
 			true === $parsedContract->getContractAttribute()->serializeSinglePropertyOnly
 				? null
 				: new stdClass();
-		/* @var ParsedSerializationProperty $parsedPropertyFetched */
+		/**
+		 * @var ParsedSerializationProperty $parsedPropertyFetched
+		 */
 		foreach ( $parsedContract->getParsedProperties() as $parsedPropertyFetched )
 		{
 			$serializationPropertyName = $parsedPropertyFetched->getPropertyAttribute()->name;
@@ -233,7 +235,9 @@ class JsonSerializer implements JsonSerializerInterface
 	private function retransformAssociativeArray( stdClass $data ): array
 	{
 		$retransformedArray = [];
-		/* @var iterable $data */
+		/**
+		 * @var iterable $data
+		 */
 		foreach ( $data as $dataKey => $dataFetched )
 		{
 			$retransformedArray[ $dataKey ] = $dataFetched;
@@ -260,7 +264,9 @@ class JsonSerializer implements JsonSerializerInterface
 		$serializeSinglePropertyOnly = $parsedContract->getContractAttribute()->serializeSinglePropertyOnly;
 		$collectedType               = $parsedContract->getContractAttribute()->collectedType;
 		$retransformedObject         = $parsedContract->getReflectedClass()->newInstanceWithoutConstructor();
-		/* @var ParsedSerializationProperty $parsedPropertyFetched */
+		/**
+		 * @var ParsedSerializationProperty $parsedPropertyFetched
+		 */
 		foreach ( $parsedContract->getParsedProperties() as $parsedPropertyFetched )
 		{
 			$serializationPropertyName = $parsedPropertyFetched->getPropertyAttribute()->name;
@@ -273,7 +279,9 @@ class JsonSerializer implements JsonSerializerInterface
 			if ( null !== $serializationPropertyValue && '' === $serializationPropertyType && '' !== $collectedType )
 			{
 				$retransformedValue = [];
-				/* @var array $serializationPropertyValue */
+				/**
+				 * @var array $serializationPropertyValue
+				 */
 				foreach ( $serializationPropertyValue as $serializationPropertyValueFetched )
 				{
 					$retransformedValue[] = $this->retransformObject( $serializationPropertyValueFetched, $collectedType );

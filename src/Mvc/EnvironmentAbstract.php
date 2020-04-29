@@ -238,7 +238,9 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 			);
 		}
 		$this->preExecutionControllers = [];
-		/* @var array $controllersConfiguration */
+		/**
+		 * @var array $controllersConfiguration
+		 */
 		foreach ( $controllersConfiguration as $controllerConfigurationFetched )
 		{
 			if ( false === is_array( $controllerConfigurationFetched ) )
@@ -349,7 +351,9 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 			);
 		}
 		$this->postExecutionControllers = [];
-		/* @var array $controllersConfiguration */
+		/**
+		 * @var array $controllersConfiguration
+		 */
 		foreach ( $controllersConfiguration as $controllerConfigurationFetched )
 		{
 			if ( false === is_array( $controllerConfigurationFetched ) )
@@ -462,7 +466,9 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 			);
 		}
 		$routes = [];
-		/* @var array $routesConfiguration */
+		/**
+		 * @var array $routesConfiguration
+		 */
 		foreach ( $routesConfiguration as $routeConfigurationFetched )
 		{
 			if ( false === is_array( $routeConfigurationFetched ) )

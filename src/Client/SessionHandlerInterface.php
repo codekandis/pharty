@@ -66,8 +66,7 @@ interface SessionHandlerInterface
 	public function get( string $key );
 
 	/**
-	 * Gets a value from the session or a specific default value, if the
-	 * key value pair does not exist. The default value will be set instead.
+	 * Gets a value from the session or a specific default value, if the key value pair does not exist. The default value will be set instead.
 	 * @param string $key The key to get its value from the session.
 	 * @param mixed $default The default value if the key value pair does not exist.
 	 * @return mixed The value from the session.

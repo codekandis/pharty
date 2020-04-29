@@ -17,9 +17,7 @@ interface FileWriterInterface
 	public function writeAll( string $content ): void;
 
 	/**
-	 * Writes the content of the file converted by the set content
-	 * converter if one has been registered, the unconverted content
-	 * otherwise.
+	 * Writes the content of the file converted by the set content converter if one has been registered, the unconverted content otherwise.
 	 * @param mixed $content The content of the file.
 	 * @throws DirectoryNotWritableException The directory of the file is not writable.
 	 * @throws FileNotWritableException The file is not writable.

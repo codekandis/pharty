@@ -88,7 +88,9 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	 */
 	public function fetchFiles(): iterable
 	{
-		/* @var FileSystemEntryInterface $fileSystemEntryFetched */
+		/**
+		 * @var FileSystemEntryInterface $fileSystemEntryFetched
+		 */
 		foreach ( $this->fetchFileSystemEntries() as $fileSystemEntryFetched )
 		{
 			if ( false === $fileSystemEntryFetched->isFile() )
@@ -103,7 +105,9 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	 */
 	public function fetchDirectories(): iterable
 	{
-		/* @var FileSystemEntryInterface $fileSystemEntryFetched */
+		/**
+		 * @var FileSystemEntryInterface $fileSystemEntryFetched
+		 */
 		foreach ( $this->fetchFileSystemEntries() as $fileSystemEntryFetched )
 		{
 			if ( false === $fileSystemEntryFetched->isDirectory() )
@@ -118,7 +122,9 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	 */
 	public function delete(): void
 	{
-		/* @var FileSystemEntryInterface $fileSystemEntryFetched */
+		/**
+		 * @var FileSystemEntryInterface $fileSystemEntryFetched
+		 */
 		foreach ( $this->fetchFileSystemEntries() as $fileSystemEntryFetched )
 		{
 			if ( true === $fileSystemEntryFetched->isFile() )
@@ -151,7 +157,9 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	public function getSize(): int
 	{
 		$size = 0;
-		/* @var FileSystemEntryInterface $fileSystemEntryFetched */
+		/**
+		 * @var FileSystemEntryInterface $fileSystemEntryFetched
+		 */
 		foreach ( $this->fetchFileSystemEntries() as $fileSystemEntryFetched )
 		{
 			if ( true === $fileSystemEntryFetched->isFile() )

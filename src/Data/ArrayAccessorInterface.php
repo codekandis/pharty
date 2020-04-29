@@ -24,8 +24,7 @@ interface ArrayAccessorInterface
 	public function get( string $key );
 
 	/**
-	 * Gets a value from the array or a specific default value, if the key
-	 * value pair does not exist.
+	 * Gets a value from the array or a specific default value, if the key value pair does not exist.
 	 * @param string $key The key to get its value from the array.
 	 * @param mixed $default The default value if the key value pair does not exist.
 	 * @return mixed The value from the array.

@@ -75,10 +75,14 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	{
 		$requestMethod = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_METHOD', HttpMethod::GET );
 		$requestUri    = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_URI', '/' );
-		/* @var ResolvedRouteInterface $resolvedRoute */
+		/**
+		 * @var ResolvedRouteInterface $resolvedRoute
+		 */
 		$resolvedRoute   = $this->getEnvironment()->getRouter()->resolveRoute( $requestMethod, $requestUri );
 		$controllerClass = $resolvedRoute->getRoute()->getClass();
-		/* @var ControllerInterface $controller */
+		/**
+		 * @var ControllerInterface $controller
+		 */
 		$controller = new $controllerClass( $this->getEnvironment(), $resolvedRoute->getData() );
 		$controller->execute();
 	}
