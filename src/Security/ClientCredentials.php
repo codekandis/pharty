@@ -1,6 +1,8 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Pharty\Security;
 
+use function md5;
+
 /**
  * Represents client credentials.
  * @package codekandis/pharty
