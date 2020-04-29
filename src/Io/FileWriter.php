@@ -16,19 +16,19 @@ class FileWriter implements FileWriterInterface
 	 * Represents the error message if the directory does not exist.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
+	protected const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if the directory is not writable.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_IS_NOT_WRITABLE = 'The directory \'%s\' is not writable.';
+	protected const ERROR_DIRECTORY_IS_NOT_WRITABLE = 'The directory \'%s\' is not writable.';
 
 	/**
 	 * Represents the error message if the file is not writable.
 	 * @var string
 	 */
-	private const ERROR_FILE_IS_NOT_WRITABLE = 'The file \'%s\' is not writable.';
+	protected const ERROR_FILE_IS_NOT_WRITABLE = 'The file \'%s\' is not writable.';
 
 	/**
 	 * Stores the file the file writer is handling.

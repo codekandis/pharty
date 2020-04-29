@@ -21,13 +21,13 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	 * Represents the error message if a configuration is missing.
 	 * @var string
 	 */
-	private const ERROR_MISSING_CONFIGURATION = 'Missing configuration \'%s\'.';
+	protected const ERROR_MISSING_CONFIGURATION = 'Missing configuration \'%s\'.';
 
 	/**
 	 * Represents the error message if a configuration type is invalid.
 	 * @var string
 	 */
-	private const ERROR_INVALID_CONFIGURATION_TYPE = 'Invalid configuration type in \'%s\': \'%s\' expected.';
+	protected const ERROR_INVALID_CONFIGURATION_TYPE = 'Invalid configuration type in \'%s\': \'%s\' expected.';
 
 	/**
 	 * Stores the name of the application.

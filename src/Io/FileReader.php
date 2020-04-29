@@ -16,25 +16,25 @@ class FileReader implements FileReaderInterface
 	 * Represents the error message if the directory does not exist.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
+	protected const ERROR_DIRECTORY_DOES_NOT_EXIST = 'The directory \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if the directory is not readable.
 	 * @var string
 	 */
-	private const ERROR_DIRECTORY_IS_NOT_READABLE = 'The directory \'%s\' is not readable.';
+	protected const ERROR_DIRECTORY_IS_NOT_READABLE = 'The directory \'%s\' is not readable.';
 
 	/**
 	 * Represents the error message if the file does not exist.
 	 * @var string
 	 */
-	private const ERROR_FILE_DOES_NOT_EXIST = 'The file \'%s\' does not exist.';
+	protected const ERROR_FILE_DOES_NOT_EXIST = 'The file \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if the file is not readable.
 	 * @var string
 	 */
-	private const ERROR_FILE_IS_NOT_READABLE = 'The file \'%s\' is not readable.';
+	protected const ERROR_FILE_IS_NOT_READABLE = 'The file \'%s\' is not readable.';
 
 	/**
 	 * Stores the file the file reader is handling.

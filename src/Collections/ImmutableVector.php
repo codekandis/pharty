@@ -21,13 +21,13 @@ class ImmutableVector implements ImmutableListInterface
 	 * Represents the error message if an index is out of bounds while the list contains no elements.
 	 * @var string
 	 */
-	private const ERROR_LIST_CONTAINS_NO_ELEMENTS = 'The index \'%d\' is out of bounds: The list contains no elements.';
+	protected const ERROR_LIST_CONTAINS_NO_ELEMENTS = 'The index \'%d\' is out of bounds: The list contains no elements.';
 
 	/**
 	 * Represents the error message if an index is out of bounds.
 	 * @var string
 	 */
-	private const ERROR_INDEX_OUT_OF_BOUNDS = 'The index \'%d\' is out of bounds: [0..%d] expected.';
+	protected const ERROR_INDEX_OUT_OF_BOUNDS = 'The index \'%d\' is out of bounds: [0..%d] expected.';
 
 	/**
 	 * Stores the position of the internal array pointer.

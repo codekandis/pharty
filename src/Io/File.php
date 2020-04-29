@@ -17,25 +17,25 @@ class File extends FileSystemEntry implements FileInterface
 	 * Represents the error message if the file does not exist.
 	 * @var string
 	 */
-	private const ERROR_FILE_DOES_NOT_EXIST = 'The file \'%s\' does not exist.';
+	protected const ERROR_FILE_DOES_NOT_EXIST = 'The file \'%s\' does not exist.';
 
 	/**
 	 * Represents the error message if the file is not readable.
 	 * @var string
 	 */
-	private const ERROR_FILE_IS_NOT_READABLE = 'The file \'%s\' is not readable.';
+	protected const ERROR_FILE_IS_NOT_READABLE = 'The file \'%s\' is not readable.';
 
 	/**
 	 * Represents the error message if the file is not writable.
 	 * @var string
 	 */
-	private const ERROR_FILE_IS_NOT_WRITABLE = 'The file \'%s\' is not writable.';
+	protected const ERROR_FILE_IS_NOT_WRITABLE = 'The file \'%s\' is not writable.';
 
 	/**
 	 * Represents the error message if the file is not deletable.
 	 * @var string
 	 */
-	private const ERROR_FILE_IS_NOT_DELETABLE = 'The file \'%s\' is not deletable.';
+	protected const ERROR_FILE_IS_NOT_DELETABLE = 'The file \'%s\' is not deletable.';
 
 	/**
 	 * {@inheritdoc}

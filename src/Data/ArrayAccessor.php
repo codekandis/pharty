@@ -15,7 +15,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	 * Represents the error message if a key does not exist.
 	 * @var string
 	 */
-	private const ERROR_KEY_DOES_NOT_EXIST = 'The key \'%s\' does not exist.';
+	protected const ERROR_KEY_DOES_NOT_EXIST = 'The key \'%s\' does not exist.';
 
 	/**
 	 * Stores the array to access.

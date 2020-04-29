@@ -24,13 +24,13 @@ class SessionHandler implements SessionHandlerInterface
 	 * Represents the error message if the session has not been started.
 	 * @var string
 	 */
-	private const ERROR_SESSION_HAS_NOT_BEEN_STARTED = 'The session has not been started.';
+	protected const ERROR_SESSION_HAS_NOT_BEEN_STARTED = 'The session has not been started.';
 
 	/**
 	 * Represents the error message if a session key does not exist.
 	 * @var string
 	 */
-	private const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist.';
+	protected const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist.';
 
 	/**
 	 * Stores the array accessor managing the session array.
