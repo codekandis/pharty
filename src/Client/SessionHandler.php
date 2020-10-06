@@ -33,10 +33,25 @@ class SessionHandler implements SessionHandlerInterface
 	protected const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist.';
 
 	/**
+	 * Stores the configuration of the session.
+	 * @var array
+	 */
+	private array $configuration;
+
+	/**
 	 * Stores the array accessor managing the session array.
 	 * @var null|ArrayAccessorInterface
 	 */
 	private ?ArrayAccessorInterface $sessionAccessor = null;
+
+	/**
+	 * Constructor method.
+	 * @param array $configuration The configuration of the session.
+	 */
+	public function __construct( array $configuration = [] )
+	{
+		$this->configuration = $configuration;
+	}
 
 	/**
 	 * {@inheritdoc}
@@ -51,7 +66,7 @@ class SessionHandler implements SessionHandlerInterface
 	 */
 	public function start(): bool
 	{
-		$sessionStarted = session_start();
+		$sessionStarted = session_start( $this->configuration );
 		if ( true === $sessionStarted )
 		{
 			$this->sessionAccessor = new ArrayAccessor( $_SESSION );
