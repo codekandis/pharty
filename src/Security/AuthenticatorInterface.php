@@ -17,11 +17,12 @@ interface AuthenticatorInterface
 
 	/**
 	 * Requests to grant the clients permission.
+	 * @param RegisteredClientInterface[] $registeredClients The registered clients.
 	 * @param ClientCredentialsInterface $clientCredentials The ID of the client.
 	 * @return bool True if the client has been granted permission, false otherwise.
 	 * @throws AuthenticationIsCorruptedException The authentication data is corrupted.
 	 */
-	public function grantPermission( ClientCredentialsInterface $clientCredentials ): bool;
+	public function grantPermission( array $registeredClients, ClientCredentialsInterface $clientCredentials ): bool;
 
 	/**
 	 * Revokes the permission of the client.
