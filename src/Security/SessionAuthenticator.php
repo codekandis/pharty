@@ -1,7 +1,6 @@
 <?php declare( strict_types = 1 );
 namespace CodeKandis\Pharty\Security;
 
-use CodeKandis\Pharty\Client\SessionHandler;
 use CodeKandis\Pharty\Client\SessionHandlerInterface;
 use CodeKandis\Pharty\Data\ArrayKeyNotFoundException;
 use function sprintf;
@@ -20,33 +19,26 @@ class SessionAuthenticator implements AuthenticatorInterface
 	protected const ERROR_SESSION_KEY_DOES_NOT_EXIST = 'The session key \'%s\' does not exist in the session.';
 
 	/**
-	 * Stores the session key storing if the client has been authenticated.
-	 * @var string
-	 */
-	private string $sessionKey;
-
-	/**
-	 * Stores the registered clients.
-	 * @var RegisteredClientInterface[]
-	 */
-	private array $registeredClients;
-
-	/**
 	 * Stores the session handler of the session authenticator.
 	 * @var SessionHandlerInterface
 	 */
 	private SessionHandlerInterface $sessionHandler;
 
 	/**
-	 * Constructor method.
-	 * @param string The session key storing if the client has been authenticated.
-	 * @param RegisteredClientInterface[] The registered clients.
+	 * Stores the session key storing if the client has been authenticated.
+	 * @var string
 	 */
-	public function __construct( string $sessionKey, array $registeredClients )
+	private string $sessionKey;
+
+	/**
+	 * Constructor method.
+	 * @param SessionHandlerInterface $sessionHandler The session handler the authentication adapter is based on.
+	 * @param string The session key storing if the client has been authenticated.
+	 */
+	public function __construct( SessionHandlerInterface $sessionHandler, string $sessionKey )
 	{
-		$this->sessionKey        = $sessionKey;
-		$this->registeredClients = $registeredClients;
-		$this->sessionHandler    = new SessionHandler();
+		$this->sessionHandler = $sessionHandler;
+		$this->sessionKey     = $sessionKey;
 		$this->initAuthentication();
 	}
 
@@ -94,13 +86,13 @@ class SessionAuthenticator implements AuthenticatorInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function grantPermission( ClientCredentialsInterface $clientCredentials ): bool
+	public function grantPermission( array $registeredClients, ClientCredentialsInterface $clientCredentials ): bool
 	{
 		if ( true === $this->isClientGranted() )
 		{
 			return true;
 		}
-		foreach ( $this->registeredClients as $registeredClientFetched )
+		foreach ( $registeredClients as $registeredClientFetched )
 		{
 			$registeredClientPermission   = $registeredClientFetched->getPermission();
 			$registeredClientId           = $registeredClientFetched->getId();
