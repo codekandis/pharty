@@ -41,7 +41,7 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	 */
 	public function getContentType(): string
 	{
-		return $this->getContentType();
+		return $this->contentType;
 	}
 
 	/**
@@ -49,7 +49,7 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	 */
 	public function getResponseStatusCode(): int
 	{
-		return $this->getResponseStatusCode();
+		return $this->responseStatusCode;
 	}
 
 	/**
