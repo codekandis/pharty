@@ -49,6 +49,7 @@ class Layout implements LayoutInterface
 	public function __construct( string $path, $data = null, ?LayoutPreProcessorInterface $preProcessor = null )
 	{
 		$this->path         = $path;
+		$this->data         = $data;
 		$this->preProcessor = $preProcessor;
 		$this->views        = new Vector();
 	}
