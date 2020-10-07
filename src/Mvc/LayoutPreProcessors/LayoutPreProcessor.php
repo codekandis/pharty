@@ -37,6 +37,22 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getContentType(): string
+	{
+		return $this->getContentType();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getResponseStatusCode(): int
+	{
+		return $this->getResponseStatusCode();
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function execute( StringContainerInterface $content ): void

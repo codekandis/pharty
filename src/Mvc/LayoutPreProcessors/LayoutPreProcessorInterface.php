@@ -11,6 +11,18 @@ use CodeKandis\Pharty\Data\StringContainerInterface;
 interface LayoutPreProcessorInterface
 {
 	/**
+	 * Gets the content type of the layout.
+	 * @return string The content type of the layout.
+	 */
+	public function getContentType(): string;
+
+	/**
+	 * Gets the response status code of the layout.
+	 * @return int The response status code of the layout.
+	 */
+	public function getResponseStatusCode(): int;
+
+	/**
 	 * Executes the layout preprocessor.
 	 * @param StringContainerInterface $content The response content of the layout.
 	 */
