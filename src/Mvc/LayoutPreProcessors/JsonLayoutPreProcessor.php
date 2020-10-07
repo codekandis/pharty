@@ -16,6 +16,6 @@ class JsonLayoutPreProcessor extends LayoutPreProcessor
 	 */
 	public function __construct( int $responseStatusCode = HttpResponseStatusCode::OK )
 	{
-		parent::__construct( 'text/json; charset=utf-8', $responseStatusCode );
+		parent::__construct( 'application/json; charset=utf-8', $responseStatusCode );
 	}
 }
