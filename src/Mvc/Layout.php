@@ -77,14 +77,14 @@ class Layout implements LayoutInterface
 	 */
 	public function render(): StringContainerInterface
 	{
-		$anonymousRenderer = static function ( string $path, LayoutInterface $layout, $data )
+		$anonymousRenderer = static function ( string $path, LayoutInterface $layout, ?LayoutPreProcessorInterface $preProcessor, $data )
 		{
 			ob_start();
 			require $path;
 
 			return new StringContainer( ob_get_clean() );
 		};
-		$renderedContent   = Closure::bind( $anonymousRenderer, null )( $this->path, $this, $this->data );
+		$renderedContent   = Closure::bind( $anonymousRenderer, null )( $this->path, $this, $this->preProcessor, $this->data );
 		if ( null !== $this->preProcessor )
 		{
 			$this->preProcessor->execute( $renderedContent );
