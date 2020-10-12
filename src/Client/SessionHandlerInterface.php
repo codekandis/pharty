@@ -33,7 +33,7 @@ interface SessionHandlerInterface
 
 	/**
 	 * Replaces the old session ID with a new one.
-	 * @param bool $deleteOldSession [false] Specifies if the old session should be deleted.
+	 * @param bool $deleteOldSession Specifies if the old session should be deleted.
 	 * @return bool True if the session ID has been replaced successfully, false otherwise.
 	 */
 	public function regenerateId( bool $deleteOldSession = false ): bool;
