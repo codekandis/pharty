@@ -9,7 +9,6 @@ use function session_name;
 use function session_regenerate_id;
 use function session_start;
 use function session_status;
-use function session_unset;
 use function session_write_close;
 use function sprintf;
 
@@ -21,10 +20,40 @@ use function sprintf;
 class SessionHandler implements SessionHandlerInterface
 {
 	/**
+	 * Represents the error message if the session cannot be started.
+	 * @var string
+	 */
+	protected const ERROR_SESSION_CANNOT_BE_STARTED = 'The session cannot be started.';
+
+	/**
+	 * Represents the error message if the session cannot be destroyed.
+	 * @var string
+	 */
+	protected const ERROR_SESSION_CANNOT_BE_DESTROYED = 'The session cannot be destroyed.';
+
+	/**
 	 * Represents the error message if the session has not been started.
 	 * @var string
 	 */
 	protected const ERROR_SESSION_HAS_NOT_BEEN_STARTED = 'The session has not been started.';
+
+	/**
+	 * Represents the error message if the session has been started.
+	 * @var string
+	 */
+	protected const ERROR_SESSION_HAS_BEEN_STARTED = 'The session has been started.';
+
+	/**
+	 * Represents the error message if the session ID has not been regenerated.
+	 * @var string
+	 */
+	protected const ERROR_SESSION_ID_HAS_NOT_BEEN_REGENERATED = 'The session ID has not been regenerated.';
+
+	/**
+	 * Represents the error message if the session cannot be written and closed.
+	 * @var string
+	 */
+	protected const ERROR_SESSION_CANNOT_BE_WRITTEN_AND_CLOSED = 'The session cannot be written and closed.';
 
 	/**
 	 * Represents the error message if a session key does not exist.
@@ -63,20 +92,25 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session cannot be started.
 	 */
 	public function start(): bool
 	{
 		$sessionStarted = session_start( $this->configuration );
-		if ( true === $sessionStarted )
+		if ( false === $sessionStarted )
 		{
-			$this->sessionAccessor = new ArrayAccessor( $_SESSION );
+			throw new SessionCannotBeStartedException( static::ERROR_SESSION_CANNOT_BE_STARTED );
 		}
+
+		$this->sessionAccessor = new ArrayAccessor( $_SESSION );
 
 		return $sessionStarted;
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
+	 * @throws SessionCannotBeDestroyedException The session cannot be destroyed.
 	 */
 	public function destroy(): bool
 	{
@@ -85,14 +119,36 @@ class SessionHandler implements SessionHandlerInterface
 			throw new SessionNotStartedException( static::ERROR_SESSION_HAS_NOT_BEEN_STARTED );
 		}
 
-		session_unset();
 		$this->sessionAccessor = null;
+		$_SESSION              = [];
 
-		return session_destroy();
+		if ( ini_get( 'session.use_cookies' ) )
+		{
+			$params = session_get_cookie_params();
+			setcookie(
+				session_name(),
+				'',
+				time() - 42000,
+				$params[ 'path' ],
+				$params[ 'domain' ],
+				$params[ 'secure' ],
+				$params[ 'httponly' ]
+			);
+		}
+
+		$sessionDestroyed = session_destroy();
+		if ( false === $sessionDestroyed )
+		{
+			throw new SessionCannotBeDestroyedException( static::ERROR_SESSION_CANNOT_BE_DESTROYED );
+		}
+
+		return $sessionDestroyed;
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
+	 * @throws SessionCannotBeWrittenAndClosedException The session cannot be written and closed.
 	 */
 	public function writeClose(): void
 	{
@@ -101,11 +157,18 @@ class SessionHandler implements SessionHandlerInterface
 			throw new SessionNotStartedException( static::ERROR_SESSION_HAS_NOT_BEEN_STARTED );
 		}
 
-		session_write_close();
+		$sessionWrittenAndClosed = session_write_close();
+		if ( false === $sessionWrittenAndClosed )
+		{
+			throw new SessionCannotBeWrittenAndClosedException( static::ERROR_SESSION_CANNOT_BE_WRITTEN_AND_CLOSED );
+		}
+
+		$this->sessionAccessor = null;
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function regenerateId( bool $deleteOldSession = false ): bool
 	{
@@ -114,27 +177,46 @@ class SessionHandler implements SessionHandlerInterface
 			throw new SessionNotStartedException( static::ERROR_SESSION_HAS_NOT_BEEN_STARTED );
 		}
 
-		return session_regenerate_id( $deleteOldSession );
+		$sessionIdRegenerated = session_regenerate_id( $deleteOldSession );
+		if ( null === $sessionIdRegenerated )
+		{
+			throw new SessionIdNotRegeneratedException( static::ERROR_SESSION_ID_HAS_NOT_BEEN_REGENERATED );
+		}
+
+		return $sessionIdRegenerated;
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionStartedException The session has been started.
 	 */
 	public function getName(): string
 	{
+		if ( null !== $this->sessionAccessor )
+		{
+			throw new SessionStartedException( static::ERROR_SESSION_HAS_BEEN_STARTED );
+		}
+
 		return session_name();
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionStartedException The session has been started.
 	 */
 	public function setName( string $name ): void
 	{
+		if ( null !== $this->sessionAccessor )
+		{
+			throw new SessionStartedException( static::ERROR_SESSION_HAS_BEEN_STARTED );
+		}
+
 		session_name( $name );
 	}
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function has( string $key ): bool
 	{
@@ -148,6 +230,8 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
+	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */
 	public function get( string $key )
 	{
@@ -175,6 +259,8 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
+	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */
 	public function getDefaulted( string $key, $value )
 	{
@@ -206,6 +292,7 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function set( string $key, $value ): void
 	{
@@ -219,6 +306,8 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * {@inheritdoc}
+	 * @throws SessionNotStartedException The session has not been started.
+	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */
 	public function unset( string $key ): void
 	{
