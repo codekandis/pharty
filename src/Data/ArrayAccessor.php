@@ -19,13 +19,13 @@ class ArrayAccessor implements ArrayAccessorInterface
 
 	/**
 	 * Stores the array to access.
-	 * @var string[]
+	 * @var mixed[]
 	 */
 	private array $data;
 
 	/**
 	 * Constructor method.
-	 * @param array $data The array to access.
+	 * @param mixed[] $data The array to access.
 	 */
 	public function __construct( array &$data )
 	{
