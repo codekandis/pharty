@@ -38,7 +38,7 @@ class File extends FileSystemEntry implements FileInterface
 	protected const ERROR_FILE_IS_NOT_DELETABLE = 'The file \'%s\' is not deletable.';
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function exists(): bool
 	{
@@ -46,7 +46,7 @@ class File extends FileSystemEntry implements FileInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function delete(): void
 	{
@@ -80,7 +80,7 @@ class File extends FileSystemEntry implements FileInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getSize(): int
 	{
@@ -107,7 +107,7 @@ class File extends FileSystemEntry implements FileInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getMimeType(): string
 	{

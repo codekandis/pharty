@@ -48,7 +48,7 @@ class ClientCredentials implements ClientCredentialsInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getId(): string
 	{
@@ -56,7 +56,7 @@ class ClientCredentials implements ClientCredentialsInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getIdMd5(): string
 	{
@@ -64,7 +64,7 @@ class ClientCredentials implements ClientCredentialsInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPassCode(): string
 	{
@@ -72,7 +72,7 @@ class ClientCredentials implements ClientCredentialsInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPassCodeMd5(): string
 	{

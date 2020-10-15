@@ -35,14 +35,14 @@ interface PathInterface extends StringifyableInterface
 	public function getExtension(): string;
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * Gets the full stringified path of the path.
 	 * @return string The full stringified path of the path.
 	 */
 	public function __toString(): string;
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * Gets the full stringified path of the path.
 	 * @return string The full stringified path of the path.
 	 */

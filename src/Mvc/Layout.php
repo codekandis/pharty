@@ -55,7 +55,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addView( ViewInterface $view ): void
 	{
@@ -63,7 +63,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addViews( ViewInterface ...$views ): void
 	{
@@ -74,7 +74,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function render(): StringContainerInterface
 	{
@@ -95,7 +95,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderAndPrint(): void
 	{
@@ -103,7 +103,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderGroup( string $groupName ): StringContainerInterface
 	{
@@ -124,7 +124,7 @@ class Layout implements LayoutInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderGroupAndPrint( string $groupName ): void
 	{

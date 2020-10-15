@@ -48,7 +48,7 @@ class Route implements RouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPattern(): string
 	{
@@ -56,7 +56,7 @@ class Route implements RouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getHttpMethod(): string
 	{
@@ -64,7 +64,7 @@ class Route implements RouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getClass(): string
 	{
@@ -72,7 +72,7 @@ class Route implements RouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getData(): array
 	{

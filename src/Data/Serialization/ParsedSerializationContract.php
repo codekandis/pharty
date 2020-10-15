@@ -42,7 +42,7 @@ class ParsedSerializationContract implements ParsedSerializationContractInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getReflectedClass(): ReflectionClass
 	{
@@ -50,7 +50,7 @@ class ParsedSerializationContract implements ParsedSerializationContractInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getContractName(): string
 	{
@@ -58,7 +58,7 @@ class ParsedSerializationContract implements ParsedSerializationContractInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getContractAttribute(): SerializationContractAttribute
 	{
@@ -66,7 +66,7 @@ class ParsedSerializationContract implements ParsedSerializationContractInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getParsedProperties(): ImmutableListInterface
 	{
@@ -74,7 +74,7 @@ class ParsedSerializationContract implements ParsedSerializationContractInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function setParsedProperties( ImmutableListInterface $parsedProperties ): void
 	{

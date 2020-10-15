@@ -30,7 +30,7 @@ class HttpData implements HttpDataInterface
 	private ArrayAccessorInterface $post;
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getServer(): ArrayAccessorInterface
 	{
@@ -38,7 +38,7 @@ class HttpData implements HttpDataInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getGet(): ArrayAccessorInterface
 	{
@@ -46,7 +46,7 @@ class HttpData implements HttpDataInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPost(): ArrayAccessorInterface
 	{

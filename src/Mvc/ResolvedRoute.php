@@ -34,7 +34,7 @@ class ResolvedRoute implements ResolvedRouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getRoute(): RouteInterface
 	{
@@ -42,7 +42,7 @@ class ResolvedRoute implements ResolvedRouteInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getData(): ArrayAccessorInterface
 	{

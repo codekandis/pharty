@@ -65,7 +65,7 @@ class FileWriter implements FileWriterInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function writeAll( string $content ): void
 	{
@@ -92,7 +92,7 @@ class FileWriter implements FileWriterInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function writeAllConverted( $content ): void
 	{
