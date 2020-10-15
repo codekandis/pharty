@@ -200,11 +200,27 @@ class Vector implements ListInterface
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function clear(): void
+	{
+		$this->elements = [];
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function add( $element ): void
 	{
 		$this->elements[] = $element;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function insert( int $index, $element ): void
+	{
+		array_splice( $this->elements, $index, 0, $element );
 	}
 
 	/**
