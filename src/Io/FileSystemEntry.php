@@ -30,7 +30,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPath(): PathInterface
 	{
@@ -38,7 +38,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getName(): string
 	{
@@ -46,7 +46,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function exists(): bool
 	{
@@ -54,7 +54,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function isFile(): bool
 	{
@@ -62,7 +62,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function isDirectory(): bool
 	{
@@ -70,7 +70,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function isReadable(): bool
 	{
@@ -78,7 +78,7 @@ class FileSystemEntry implements FileSystemEntryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function isWritable(): bool
 	{

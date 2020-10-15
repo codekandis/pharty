@@ -28,7 +28,7 @@ class Router implements RouterInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function resolveRoute( string $httpMethod, string $uri ): ?ResolvedRouteInterface
 	{

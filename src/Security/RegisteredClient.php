@@ -48,7 +48,7 @@ class RegisteredClient implements RegisteredClientInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getDescription(): string
 	{
@@ -56,7 +56,7 @@ class RegisteredClient implements RegisteredClientInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getId(): string
 	{
@@ -64,7 +64,7 @@ class RegisteredClient implements RegisteredClientInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPassCode(): string
 	{
@@ -72,7 +72,7 @@ class RegisteredClient implements RegisteredClientInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPermission(): int
 	{

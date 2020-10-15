@@ -83,7 +83,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getStatus(): int
 	{
@@ -91,7 +91,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session cannot be started.
 	 */
 	public function start(): bool
@@ -108,7 +108,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 * @throws SessionCannotBeDestroyedException The session cannot be destroyed.
 	 */
@@ -146,7 +146,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 * @throws SessionCannotBeWrittenAndClosedException The session cannot be written and closed.
 	 */
@@ -167,7 +167,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function regenerateId( bool $deleteOldSession = false ): bool
@@ -187,7 +187,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionStartedException The session has been started.
 	 */
 	public function getName(): string
@@ -201,7 +201,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionStartedException The session has been started.
 	 */
 	public function setName( string $name ): void
@@ -215,7 +215,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function has( string $key ): bool
@@ -229,7 +229,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */
@@ -258,7 +258,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */
@@ -291,7 +291,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 */
 	public function set( string $key, $value ): void
@@ -305,7 +305,7 @@ class SessionHandler implements SessionHandlerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws SessionNotStartedException The session has not been started.
 	 * @throws SessionKeyNotFoundException The session key does not exist.
 	 */

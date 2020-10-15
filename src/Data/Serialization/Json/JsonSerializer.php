@@ -196,7 +196,7 @@ class JsonSerializer implements JsonSerializerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function serialize( $data ): string
 	{
@@ -322,7 +322,7 @@ class JsonSerializer implements JsonSerializerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function deserialize( string $data, string $class ): object
 	{

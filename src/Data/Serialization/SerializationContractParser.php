@@ -183,7 +183,7 @@ class SerializationContractParser implements SerializationContractParserInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function parse(): ParsedSerializationContractInterface
 	{

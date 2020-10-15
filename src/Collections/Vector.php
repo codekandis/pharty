@@ -60,7 +60,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function count(): int
 	{
@@ -68,7 +68,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function current()
 	{
@@ -76,7 +76,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function next(): void
 	{
@@ -84,7 +84,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function key(): int
 	{
@@ -92,7 +92,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function rewind(): void
 	{
@@ -100,7 +100,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function valid(): bool
 	{
@@ -108,7 +108,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function contains( $element ): bool
 	{
@@ -116,7 +116,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function elementAt( int $index )
 	{
@@ -146,7 +146,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function find( Closure $predicate )
 	{
@@ -162,7 +162,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function findAll( Closure $predicate ): self
 	{
@@ -179,7 +179,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function transform( Closure $transformator ): self
 	{
@@ -193,7 +193,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toArray(): array
 	{
@@ -209,7 +209,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function add( $element ): void
 	{
@@ -225,7 +225,7 @@ class Vector implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function remove( $element ): void
 	{

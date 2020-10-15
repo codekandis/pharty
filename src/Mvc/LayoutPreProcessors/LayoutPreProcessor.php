@@ -53,7 +53,7 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function execute( StringContainerInterface $content ): void
 	{
