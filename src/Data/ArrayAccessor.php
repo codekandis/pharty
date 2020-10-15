@@ -33,7 +33,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function has( string $key ): bool
 	{
@@ -41,7 +41,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function get( string $key )
 	{
@@ -59,7 +59,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getDefaulted( string $key, $default )
 	{
@@ -69,7 +69,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function set( string $key, $value ): void
 	{
@@ -78,7 +78,7 @@ class ArrayAccessor implements ArrayAccessorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function unset( string $key ): void
 	{

@@ -71,7 +71,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function count(): int
 	{
@@ -79,7 +79,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function current()
 	{
@@ -87,7 +87,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function next(): void
 	{
@@ -95,7 +95,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function key(): int
 	{
@@ -103,7 +103,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function rewind(): void
 	{
@@ -111,7 +111,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function valid(): bool
 	{
@@ -119,7 +119,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function contains( $element ): bool
 	{
@@ -127,7 +127,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function elementAt( int $index )
 	{
@@ -157,7 +157,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function find( Closure $predicate )
 	{
@@ -173,7 +173,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function findAll( Closure $predicate ): self
 	{
@@ -190,7 +190,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function transform( Closure $transformator ): self
 	{
@@ -204,7 +204,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toArray(): array
 	{
@@ -220,7 +220,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 * @throws DuplicateElementException The element has already been added.
 	 */
 	public function add( $element ): void
@@ -246,7 +246,7 @@ class Set implements ListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function remove( $element ): void
 	{

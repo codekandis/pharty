@@ -63,7 +63,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function count(): int
 	{
@@ -71,7 +71,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function current()
 	{
@@ -79,7 +79,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function next(): void
 	{
@@ -87,7 +87,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function key(): int
 	{
@@ -95,7 +95,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function rewind(): void
 	{
@@ -103,7 +103,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function valid(): bool
 	{
@@ -111,7 +111,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function contains( $element ): bool
 	{
@@ -119,7 +119,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function elementAt( int $index )
 	{
@@ -149,7 +149,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function find( Closure $predicate )
 	{
@@ -165,7 +165,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function findAll( Closure $predicate ): self
 	{
@@ -182,7 +182,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function transform( Closure $transformator ): self
 	{
@@ -196,7 +196,7 @@ class ImmutableSet implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toArray(): array
 	{

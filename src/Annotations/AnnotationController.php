@@ -47,7 +47,7 @@ class AnnotationController implements AnnotationControllerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getAnnotationReader(): AnnotationReader
 	{

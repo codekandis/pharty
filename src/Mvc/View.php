@@ -53,7 +53,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getGroupName(): string
 	{
@@ -61,7 +61,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addView( ViewInterface $view ): void
 	{
@@ -69,7 +69,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addViews( ViewInterface...$views ): void
 	{
@@ -80,7 +80,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function render(): StringContainerInterface
 	{
@@ -96,7 +96,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderAndPrint(): void
 	{
@@ -104,7 +104,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderGroup( string $groupName ): StringContainerInterface
 	{
@@ -125,7 +125,7 @@ class View implements ViewInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function renderGroupAndPrint( string $groupName ): void
 	{

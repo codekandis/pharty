@@ -35,7 +35,7 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getName(): string
 	{
@@ -88,7 +88,7 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function execute(): void
 	{

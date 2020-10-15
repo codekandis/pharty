@@ -34,7 +34,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	protected const ERROR_DIRECTORY_IS_NOT_DELETABLE = 'The directory \'%s\' is not deletable.';
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function exists(): bool
 	{
@@ -42,7 +42,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function fetchFileSystemEntries(): iterable
 	{
@@ -84,7 +84,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function fetchFiles(): iterable
 	{
@@ -101,7 +101,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function fetchDirectories(): iterable
 	{
@@ -118,7 +118,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function delete(): void
 	{
@@ -152,7 +152,7 @@ class Directory extends FileSystemEntry implements DirectoryInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getSize(): int
 	{

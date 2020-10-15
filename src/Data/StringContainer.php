@@ -26,7 +26,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getContent(): string
 	{
@@ -34,7 +34,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getLength(): int
 	{
@@ -42,7 +42,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addContent( string $content ): void
 	{
@@ -50,7 +50,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function addContainer( StringContainerInterface $container ): void
 	{
@@ -58,7 +58,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function __toString(): string
 	{
@@ -66,7 +66,7 @@ class StringContainer implements StringContainerInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toString(): string
 	{
