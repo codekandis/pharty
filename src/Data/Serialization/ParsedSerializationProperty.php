@@ -35,7 +35,7 @@ class ParsedSerializationProperty implements ParsedSerializationPropertyInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPropertyName(): string
 	{
@@ -43,7 +43,7 @@ class ParsedSerializationProperty implements ParsedSerializationPropertyInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPropertyValue( object $serializationContract )
 	{
@@ -51,7 +51,7 @@ class ParsedSerializationProperty implements ParsedSerializationPropertyInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function setPropertyValue( object $serializationContract, $value ): void
 	{
@@ -59,7 +59,7 @@ class ParsedSerializationProperty implements ParsedSerializationPropertyInterfac
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPropertyAttribute(): SerializationPropertyAttribute
 	{

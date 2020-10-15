@@ -52,7 +52,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function count(): int
 	{
@@ -60,7 +60,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function current()
 	{
@@ -68,7 +68,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function next(): void
 	{
@@ -76,7 +76,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function key(): int
 	{
@@ -84,7 +84,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function rewind(): void
 	{
@@ -92,7 +92,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function valid(): bool
 	{
@@ -100,7 +100,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function contains( $element ): bool
 	{
@@ -108,7 +108,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function elementAt( int $index )
 	{
@@ -138,7 +138,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function find( Closure $predicate )
 	{
@@ -154,7 +154,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function findAll( Closure $predicate ): self
 	{
@@ -171,7 +171,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function transform( Closure $transformator ): self
 	{
@@ -185,7 +185,7 @@ class ImmutableVector implements ImmutableListInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toArray(): array
 	{

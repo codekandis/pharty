@@ -81,7 +81,7 @@ class FileReader implements FileReaderInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function readAll(): string
 	{
@@ -120,7 +120,7 @@ class FileReader implements FileReaderInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function readAllConverted()
 	{

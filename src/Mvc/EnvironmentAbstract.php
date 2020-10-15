@@ -66,7 +66,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	private RouterInterface $router;
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPreExecutionControllers(): array
 	{
@@ -74,7 +74,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPostExecutionControllers(): array
 	{
@@ -149,7 +149,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getApplicationName(): string
 	{
@@ -157,7 +157,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getHttpData(): HttpDataInterface
 	{
@@ -165,7 +165,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getAuthenticator(): AuthenticatorInterface
 	{
@@ -182,7 +182,7 @@ abstract class EnvironmentAbstract implements EnvironmentInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getRouter(): RouterInterface
 	{

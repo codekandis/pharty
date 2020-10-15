@@ -53,7 +53,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getBaseName(): string
 	{
@@ -61,7 +61,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getDirectoryName(): string
 	{
@@ -69,7 +69,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getName(): string
 	{
@@ -77,7 +77,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getExtension(): string
 	{
@@ -85,7 +85,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function __toString(): string
 	{
@@ -93,7 +93,7 @@ class Path implements PathInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function toString(): string
 	{

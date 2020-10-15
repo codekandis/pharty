@@ -57,7 +57,7 @@ class SessionAuthenticator implements AuthenticatorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function isClientGranted(): bool
 	{
@@ -84,7 +84,7 @@ class SessionAuthenticator implements AuthenticatorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function grantPermission( array $registeredClients, ClientCredentialsInterface $clientCredentials ): bool
 	{
@@ -118,7 +118,7 @@ class SessionAuthenticator implements AuthenticatorInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function revokePermission(): void
 	{
