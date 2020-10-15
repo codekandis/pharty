@@ -5,6 +5,7 @@ use Closure;
 use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
 use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
 use function array_search;
+use function array_splice;
 use function array_values;
 use function count;
 use function in_array;
@@ -200,11 +201,27 @@ class Vector implements ListInterface
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function clear(): void
+	{
+		$this->elements = [];
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function add( $element ): void
 	{
 		$this->elements[] = $element;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function insert( int $index, $element ): void
+	{
+		array_splice( $this->elements, $index, 0, $element );
 	}
 
 	/**
