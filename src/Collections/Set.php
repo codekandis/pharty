@@ -226,9 +226,14 @@ class Set implements ListInterface
 
 	/**
 	 * @inheritDoc
+	 * @throws DuplicateElementException The element has already been added.
 	 */
 	public function insert( int $index, $element ): void
 	{
+		if ( true === $this->contains( $element ) )
+		{
+			throw new DuplicateElementException( static::ERROR_ELEMENT_ALREADY_EXISTS );
+		}
 		array_splice( $this->elements, $index, 0, $element );
 	}
 
