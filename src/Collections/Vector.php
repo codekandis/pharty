@@ -236,7 +236,7 @@ class Vector implements ListInterface
 	 */
 	public function insert( int $index, $element ): void
 	{
-		array_splice( $this->elements, $index, 0, $element );
+		array_splice( $this->elements, $index, 0, [ $element ] );
 	}
 
 	/**
