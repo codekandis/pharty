@@ -257,7 +257,7 @@ class Set implements ListInterface
 		{
 			throw new DuplicateElementException( static::ERROR_ELEMENT_ALREADY_EXISTS );
 		}
-		array_splice( $this->elements, $index, 0, $element );
+		array_splice( $this->elements, $index, 0, [ $element ] );
 	}
 
 	/**
