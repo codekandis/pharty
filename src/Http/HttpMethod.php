@@ -24,41 +24,41 @@ abstract class HttpMethod
 	 * Defines the HTTP method as `HEAD`.
 	 * @var string
 	 */
-	public const HEAD = ' HEAD';
+	public const HEAD = 'HEAD';
 
 	/**
 	 * Defines the HTTP method as `PUT`.
 	 * @var string
 	 */
-	public const PUT = ' PUT';
+	public const PUT = 'PUT';
 
 	/**
 	 * Defines the HTTP method as `PATCH`.
 	 * @var string
 	 */
-	public const PATCH = ' PATCH';
+	public const PATCH = 'PATCH';
 
 	/**
 	 * Defines the HTTP method as `DELETE`.
 	 * @var string
 	 */
-	public const DELETE = ' DELETE';
+	public const DELETE = 'DELETE';
 
 	/**
 	 * Defines the HTTP method as `TRACE`.
 	 * @var string
 	 */
-	public const TRACE = ' TRACE';
+	public const TRACE = 'TRACE';
 
 	/**
 	 * Defines the HTTP method as `OPTIONS`.
 	 * @var string
 	 */
-	public const OPTIONS = ' OPTIONS';
+	public const OPTIONS = 'OPTIONS';
 
 	/**
 	 * Defines the HTTP method as `CONNECT`.
 	 * @var string
 	 */
-	public const CONNECT = ' CONNECT';
+	public const CONNECT = 'CONNECT';
 }
