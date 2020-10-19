@@ -45,7 +45,6 @@ class ImmutableSet implements ImmutableListInterface
 	 * Stores the internal list of elements.
 	 * @var array
 	 * @SerializationPropertyAttribute()
-	 *
 	 */
 	protected array $elements;
 
@@ -124,7 +123,7 @@ class ImmutableSet implements ImmutableListInterface
 	 */
 	public function indexOf( $element ): int
 	{
-		$index = array_search( $element, $this->elements );
+		$index = array_search( $element, $this->elements, true );
 
 		if ( false === $index )
 		{
