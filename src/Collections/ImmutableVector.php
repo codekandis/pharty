@@ -113,7 +113,7 @@ class ImmutableVector implements ImmutableListInterface
 	 */
 	public function indexOf( $element ): int
 	{
-		$index = array_search( $this->elements, $element );
+		$index = array_search( $element, $this->elements );
 
 		if ( false === $index )
 		{
