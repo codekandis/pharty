@@ -18,6 +18,13 @@ interface ImmutableListInterface extends IteratorInterface
 	public function contains( $element ): bool;
 
 	/**
+	 * Determines the index of an element.
+	 * @param mixed $element The element to find its index.
+	 * @return int The index of the element if found, -1 otherwise.
+	 */
+	public function indexOf( $element ): int;
+
+	/**
 	 * Gets an element of the list by its zero based index.
 	 * @param int $index The zero based index of the element to get.
 	 * @return mixed The element of the list at the specified index.
