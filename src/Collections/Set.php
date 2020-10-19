@@ -129,6 +129,21 @@ class Set implements ListInterface
 	/**
 	 * @inheritDoc
 	 */
+	public function indexOf( $element ): int
+	{
+		$index = array_search( $this->elements, $element );
+
+		if ( false === $index )
+		{
+			return -1;
+		}
+
+		return $index;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function elementAt( int $index )
 	{
 		$count = count( $this->elements );
