@@ -4,6 +4,7 @@ namespace CodeKandis\Pharty\Collections;
 use Closure;
 use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
 use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
+use function array_search;
 use function array_values;
 use function count;
 use function in_array;
@@ -105,6 +106,21 @@ class ImmutableVector implements ImmutableListInterface
 	public function contains( $element ): bool
 	{
 		return in_array( $element, $this->elements, true );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function indexOf( $element ): int
+	{
+		$index = array_search( $this->elements, $element );
+
+		if ( false === $index )
+		{
+			return -1;
+		}
+
+		return $index;
 	}
 
 	/**
