@@ -4,6 +4,7 @@ namespace CodeKandis\Pharty\Collections;
 use Closure;
 use CodeKandis\Pharty\Data\Serialization\SerializationContractAttribute;
 use CodeKandis\Pharty\Data\Serialization\SerializationPropertyAttribute;
+use function array_key_exists;
 use function array_search;
 use function array_splice;
 use function array_values;
@@ -36,6 +37,12 @@ class Vector implements ListInterface
 	 * @var string
 	 */
 	protected const ERROR_ELEMENT_NOT_FOUND = 'The element does not exist.';
+
+	/**
+	 * Represents the error message if an element at a specified index does not exist.
+	 * @var string
+	 */
+	protected const ERROR_ELEMENT_AT_INDEX_NOT_FOUND = 'The element at the index \'%d\' does not exist.';
 
 	/**
 	 * Stores the position of the internal array pointer.
@@ -120,7 +127,7 @@ class Vector implements ListInterface
 	 */
 	public function indexOf( $element ): int
 	{
-		$index = array_search( $element, $this->elements );
+		$index = array_search( $element, $this->elements, true );
 
 		if ( false === $index )
 		{
@@ -237,6 +244,38 @@ class Vector implements ListInterface
 	public function insert( int $index, $element ): void
 	{
 		array_splice( $this->elements, $index, 0, [ $element ] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function replace( $element, $replacement ): void
+	{
+		$index = $this->indexOf( $element );
+
+		if ( -1 === $index )
+		{
+			throw new ElementNotFoundException( static::ERROR_ELEMENT_NOT_FOUND );
+		}
+
+		array_splice( $this->elements, $index, 1, [ $replacement ] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function replaceAt( int $index, $replacement ): void
+	{
+		if ( false === array_key_exists( $index, $this->elements ) )
+		{
+			$message = sprintf(
+				static::ERROR_ELEMENT_AT_INDEX_NOT_FOUND,
+				$index
+			);
+			throw new ElementNotFoundException( $message );
+		}
+
+		$this->elements[ $index ] = $replacement;
 	}
 
 	/**
