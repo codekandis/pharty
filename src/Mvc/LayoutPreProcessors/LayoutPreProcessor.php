@@ -2,9 +2,9 @@
 namespace CodeKandis\Pharty\Mvc\LayoutPreProcessors;
 
 use CodeKandis\Pharty\Data\StringContainerInterface;
+use CodeKandis\Pharty\Http\HttpResponseHeaders;
+use CodeKandis\Pharty\Http\HttpResponseHeadersInterface;
 use CodeKandis\Pharty\Http\HttpResponseStatusCode;
-use function header;
-use function http_response_code;
 
 /**
  * Represents the base class of all layout preprocessors.
@@ -14,10 +14,10 @@ use function http_response_code;
 class LayoutPreProcessor implements LayoutPreProcessorInterface
 {
 	/**
-	 * Stores the content type of the response.
-	 * @var string
+	 * Stores the response headers of the response.
+	 * @var HttpResponseHeadersInterface
 	 */
-	private string $contentType;
+	private HttpResponseHeadersInterface $responseHeaders;
 
 	/**
 	 * Stores the HTTP response status code of the response.
@@ -26,22 +26,29 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	private int $responseStatusCode;
 
 	/**
+	 * Stores the content type of the response.
+	 * @var string
+	 */
+	private string $contentType;
+
+	/**
 	 * Constructor method.
 	 * @param string The content type of the response.
 	 * @param int $responseStatusCode The HTTP response status code of the response.
 	 */
 	public function __construct( string $contentType, int $responseStatusCode = HttpResponseStatusCode::OK )
 	{
-		$this->contentType        = $contentType;
+		$this->responseHeaders    = new HttpResponseHeaders();
 		$this->responseStatusCode = $responseStatusCode;
+		$this->contentType        = $contentType;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getContentType(): string
+	public function getResponseHeaders(): HttpResponseHeadersInterface
 	{
-		return $this->contentType;
+		return $this->responseHeaders;
 	}
 
 	/**
@@ -55,10 +62,18 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	/**
 	 * @inheritDoc
 	 */
+	public function getContentType(): string
+	{
+		return $this->contentType;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function execute( StringContainerInterface $content ): void
 	{
-		http_response_code( $this->responseStatusCode );
-		header( 'Content-Type: ' . $this->contentType );
-		header( 'Content-Length: ' . $content->getLength() );
+		$this->responseHeaders->setStatusCode( $this->getResponseStatusCode() );
+		$this->responseHeaders->setHeaderValue( 'content-type', $this->contentType );
+		$this->responseHeaders->setHeaderValue( 'content-length', (string) $content->getLength() );
 	}
 }
