@@ -3,7 +3,6 @@ namespace CodeKandis\Pharty\Mvc\LayoutPreProcessors;
 
 use CodeKandis\Pharty\Data\StringContainerInterface;
 use CodeKandis\Pharty\Http\HttpResponseStatusCode;
-use function header;
 
 /**
  * Represents an octet stream layout preprocessor.
@@ -27,9 +26,9 @@ class OctetStreamLayoutPreProcessor extends LayoutPreProcessor
 	public function execute( StringContainerInterface $content ): void
 	{
 		parent::execute( $content );
-		header( 'Content-Transfer-Encoding: binary' );
-		header( 'Expires: 0' );
-		header( 'Cache-Control: must-revalidate' );
-		header( 'Pragma: public' );
+		$this->getResponseHeaders()->setHeaderValue( 'content-transfer-encoding', 'binary' );
+		$this->getResponseHeaders()->setHeaderValue( 'expires', '0' );
+		$this->getResponseHeaders()->setHeaderValue( 'cache-control', 'must-revalidate' );
+		$this->getResponseHeaders()->setHeaderValue( 'pragma', 'public' );
 	}
 }
