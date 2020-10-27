@@ -18,16 +18,16 @@ interface LayoutPreProcessorInterface
 	public function getResponseHeaders(): HttpResponseHeadersInterface;
 
 	/**
-	 * Gets the response status code of the layout.
-	 * @return int The response status code of the layout.
+	 * Gets the response status code of the response.
+	 * @return int The response status code of the response.
 	 */
 	public function getResponseStatusCode(): int;
 
 	/**
-	 * Gets the content type of the layout.
-	 * @return string The content type of the layout.
+	 * Gets the content type of the response.
+	 * @return null|string The content type of the response, null otherwise.
 	 */
-	public function getContentType(): string;
+	public function getContentType(): ?string;
 
 	/**
 	 * Executes the layout preprocessor.
