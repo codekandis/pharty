@@ -2,6 +2,7 @@
 namespace CodeKandis\Pharty\Mvc;
 
 use CodeKandis\Pharty\Data\StringContainerInterface;
+use CodeKandis\Pharty\Http\HttpResponseHeadersInterface;
 
 /**
  * Represents the interface of all layouts.
@@ -10,6 +11,12 @@ use CodeKandis\Pharty\Data\StringContainerInterface;
  */
 interface LayoutInterface
 {
+	/**
+	 * Gets the response headers of the response.
+	 * @return HttpResponseHeadersInterface The response headers of the response.
+	 */
+	public function getResponseHeaders(): HttpResponseHeadersInterface;
+
 	/**
 	 * Adds a view to the layout.
 	 * @param ViewInterface $view The view to add to the layout.

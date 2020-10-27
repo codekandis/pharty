@@ -17,7 +17,7 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	 * Stores the response headers of the response.
 	 * @var HttpResponseHeadersInterface
 	 */
-	private HttpResponseHeadersInterface $responseHeaders;
+	protected HttpResponseHeadersInterface $responseHeaders;
 
 	/**
 	 * Stores the HTTP response status code of the response.
