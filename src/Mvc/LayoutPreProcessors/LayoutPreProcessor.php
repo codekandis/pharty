@@ -27,16 +27,16 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 
 	/**
 	 * Stores the content type of the response.
-	 * @var string
+	 * @var null|string
 	 */
-	private string $contentType;
+	private ?string $contentType;
 
 	/**
 	 * Constructor method.
-	 * @param string The content type of the response.
+	 * @param null|string The content type of the response, null otherwise.
 	 * @param int $responseStatusCode The HTTP response status code of the response.
 	 */
-	public function __construct( string $contentType, int $responseStatusCode = HttpResponseStatusCode::OK )
+	public function __construct( ?string $contentType = null, int $responseStatusCode = HttpResponseStatusCode::OK )
 	{
 		$this->responseHeaders    = new HttpResponseHeaders();
 		$this->responseStatusCode = $responseStatusCode;
@@ -62,7 +62,7 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	/**
 	 * @inheritDoc
 	 */
-	public function getContentType(): string
+	public function getContentType(): ?string
 	{
 		return $this->contentType;
 	}
@@ -73,7 +73,10 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 	public function execute( StringContainerInterface $content ): void
 	{
 		$this->responseHeaders->setStatusCode( $this->getResponseStatusCode() );
-		$this->responseHeaders->setHeaderValue( 'content-type', $this->contentType );
+		if ( null !== $this->contentType )
+		{
+			$this->responseHeaders->setHeaderValue( 'content-type', $this->contentType );
+		}
 		$this->responseHeaders->setHeaderValue( 'content-length', (string) $content->getLength() );
 	}
 }
