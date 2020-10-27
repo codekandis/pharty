@@ -26,9 +26,9 @@ class OctetStreamLayoutPreProcessor extends LayoutPreProcessor
 	public function execute( StringContainerInterface $content ): void
 	{
 		parent::execute( $content );
-		$this->getResponseHeaders()->setHeaderValue( 'content-transfer-encoding', 'binary' );
-		$this->getResponseHeaders()->setHeaderValue( 'expires', '0' );
-		$this->getResponseHeaders()->setHeaderValue( 'cache-control', 'must-revalidate' );
-		$this->getResponseHeaders()->setHeaderValue( 'pragma', 'public' );
+		$this->responseHeaders->setHeaderValue( 'content-transfer-encoding', 'binary' );
+		$this->responseHeaders->setHeaderValue( 'expires', '0' );
+		$this->responseHeaders->setHeaderValue( 'cache-control', 'must-revalidate' );
+		$this->responseHeaders->setHeaderValue( 'pragma', 'public' );
 	}
 }
