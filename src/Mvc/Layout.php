@@ -5,6 +5,8 @@ use Closure;
 use CodeKandis\Pharty\Collections\Vector;
 use CodeKandis\Pharty\Data\StringContainer;
 use CodeKandis\Pharty\Data\StringContainerInterface;
+use CodeKandis\Pharty\Http\HttpResponseHeaders;
+use CodeKandis\Pharty\Http\HttpResponseHeadersInterface;
 use CodeKandis\Pharty\Mvc\LayoutPreProcessors\LayoutPreProcessorInterface;
 use function ob_get_clean;
 use function ob_start;
@@ -16,6 +18,12 @@ use function ob_start;
  */
 class Layout implements LayoutInterface
 {
+	/**
+	 * Stores the response headers of the layout.
+	 * @var HttpResponseHeadersInterface
+	 */
+	private HttpResponseHeadersInterface $responseHeaders;
+
 	/**
 	 * Stores the path of the layout
 	 * @var string
@@ -48,10 +56,19 @@ class Layout implements LayoutInterface
 	 */
 	public function __construct( string $path, $data = null, ?LayoutPreProcessorInterface $preProcessor = null )
 	{
-		$this->path         = $path;
-		$this->data         = $data;
-		$this->preProcessor = $preProcessor;
-		$this->views        = new Vector();
+		$this->responseHeaders = new HttpResponseHeaders();
+		$this->path            = $path;
+		$this->data            = $data;
+		$this->preProcessor    = $preProcessor;
+		$this->views           = new Vector();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getResponseHeaders(): HttpResponseHeadersInterface
+	{
+		return $this->responseHeaders;
 	}
 
 	/**
@@ -89,7 +106,9 @@ class Layout implements LayoutInterface
 		if ( null !== $this->preProcessor )
 		{
 			$this->preProcessor->execute( $renderedContent );
+			$this->responseHeaders = $this->preProcessor->getResponseHeaders()->merge( $this->responseHeaders );
 		}
+		$this->responseHeaders->flush();
 
 		return $renderedContent;
 	}
