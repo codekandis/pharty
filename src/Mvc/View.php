@@ -29,7 +29,7 @@ class View implements ViewInterface
 
 	/**
 	 * Stores the data the view needs to render.
-	 * @var null|mixed
+	 * @var ?mixed
 	 */
 	private $data;
 
@@ -43,7 +43,7 @@ class View implements ViewInterface
 	 * Constructor method.
 	 * @param string $groupName The name of the view group the view belongs to.
 	 * @param string $path The path of the view.
-	 * @param null|mixed $data The data the view needs to render.
+	 * @param ?mixed $data The data the view needs to render.
 	 */
 	public function __construct( string $groupName, string $path, $data = null )
 	{

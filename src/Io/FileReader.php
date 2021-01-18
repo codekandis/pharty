@@ -44,14 +44,14 @@ class FileReader implements FileReaderInterface
 
 	/**
 	 * Stores the converter to convert the read content.
-	 * @var null|ConverterInterface
+	 * @var ?ConverterInterface
 	 */
 	private ?ConverterInterface $converter;
 
 	/**
 	 * Constructor method.
 	 * @param FileInterface $file The file the file reader is handling.
-	 * @param null|ConverterInterface $converter The file read converter to convert the read file content, null otherwise.
+	 * @param ?ConverterInterface $converter The file read converter to convert the read file content, null otherwise.
 	 * @throws DirectoryNotFoundException The directory of the file does not exist.
 	 * @throws FileNotFoundException The file does not exist.
 	 */

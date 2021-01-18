@@ -25,7 +25,7 @@ interface LayoutPreProcessorInterface
 
 	/**
 	 * Gets the content type of the response.
-	 * @return null|string The content type of the response, null otherwise.
+	 * @return ?string The content type of the response, null otherwise.
 	 */
 	public function getContentType(): ?string;
 

@@ -49,7 +49,7 @@ class SerializationContractParser implements SerializationContractParserInterfac
 
 	/**
 	 * Stores the reflected class of the class to parse.
-	 * @var null|ReflectionClass
+	 * @var ?ReflectionClass
 	 */
 	private ?ReflectionClass $reflectedClass;
 
@@ -70,7 +70,7 @@ class SerializationContractParser implements SerializationContractParserInterfac
 
 	/**
 	 * Gets the reflected class of the class to parse.
-	 * @return null|ReflectionClass The reflected class of the class to parse.
+	 * @return ?ReflectionClass The reflected class of the class to parse.
 	 */
 	private function getReflectedClass(): ?ReflectionClass
 	{

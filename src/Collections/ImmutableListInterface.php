@@ -35,7 +35,7 @@ interface ImmutableListInterface extends IteratorInterface
 	/**
 	 * Gets the first element of the list matching a passed predicate.
 	 * @param Closure $predicate The predicate defining which element to find.
-	 * @return null|mixed The first element matching the passed predicate, null otherwise.
+	 * @return ?mixed The first element matching the passed predicate, null otherwise.
 	 */
 	public function find( Closure $predicate );
 

@@ -69,7 +69,7 @@ class SessionHandler implements SessionHandlerInterface
 
 	/**
 	 * Stores the array accessor managing the session array.
-	 * @var null|ArrayAccessorInterface
+	 * @var ?ArrayAccessorInterface
 	 */
 	private ?ArrayAccessorInterface $sessionAccessor = null;
 

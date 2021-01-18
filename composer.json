@@ -30,12 +30,11 @@
 		"php": ">=7.4",
 		"ext-fileinfo": "*",
 		"doctrine/annotations": "^1",
-		"codekandis/json-codec": "^1"
+		"codekandis/json-codec": "^2"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-master",
-		"sensiolabs/security-checker": "^6",
-		"codekandis/phpunit": "^1"
+		"codekandis/phpunit": "^3"
 	},
 	"autoload": {
 		"psr-4": {
@@ -50,10 +49,5 @@
 				"tests/"
 			]
 		}
-	},
-	"scripts": {
-		"post-update-cmd": [
-			"[ ${COMPOSER_DEV_MODE} -eq 0 ] || vendor/bin/security-checker security:check composer.lock"
-		]
 	}
 }
