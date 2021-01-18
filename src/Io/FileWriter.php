@@ -38,14 +38,14 @@ class FileWriter implements FileWriterInterface
 
 	/**
 	 * Stores the converter to convert the content to write.
-	 * @var null|ConverterInterface
+	 * @var ?ConverterInterface
 	 */
 	private ?ConverterInterface $converter;
 
 	/**
 	 * Constructor method.
 	 * @param FileInterface $file The file the file writer is handling.
-	 * @param null|ConverterInterface $converter The file write converter to convert the file content to write, null otherwise.
+	 * @param ?ConverterInterface $converter The file write converter to convert the file content to write, null otherwise.
 	 * @throws DirectoryNotFoundException The directory of the file does not exist.
 	 */
 	public function __construct( FileInterface $file, ?ConverterInterface $converter = null )

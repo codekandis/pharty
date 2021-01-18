@@ -27,13 +27,13 @@ class LayoutPreProcessor implements LayoutPreProcessorInterface
 
 	/**
 	 * Stores the content type of the response.
-	 * @var null|string
+	 * @var ?string
 	 */
 	private ?string $contentType;
 
 	/**
 	 * Constructor method.
-	 * @param null|string The content type of the response, null otherwise.
+	 * @param ?string The content type of the response, null otherwise.
 	 * @param int $responseStatusCode The HTTP response status code of the response.
 	 */
 	public function __construct( ?string $contentType = null, int $responseStatusCode = HttpResponseStatusCode::OK )

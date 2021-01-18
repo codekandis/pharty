@@ -25,7 +25,7 @@ interface HttpResponseHeadersInterface
 	/**
 	 * Gets the value of a specific header.
 	 * @param string $name The name of the header.
-	 * @return null|string The value of the header if set, null otherwise.
+	 * @return ?string The value of the header if set, null otherwise.
 	 */
 	public function getHeaderValue( string $name ): ?string;
 
@@ -39,7 +39,7 @@ interface HttpResponseHeadersInterface
 	/**
 	 * Gets a specific header.
 	 * @param string $name The name of the header.
-	 * @return null|HttpHeaderInterface The header if set, null otherwise
+	 * @return ?HttpHeaderInterface The header if set, null otherwise
 	 */
 	public function getHeader( string $name ): ?HttpHeaderInterface;
 

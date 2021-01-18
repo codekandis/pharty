@@ -32,13 +32,13 @@ class Layout implements LayoutInterface
 
 	/**
 	 * Stores the data the layout needs to render.
-	 * @var null|mixed
+	 * @var ?mixed
 	 */
 	private $data;
 
 	/**
 	 * Stores the preprocessor of the layout.
-	 * @var null|LayoutPreProcessorInterface
+	 * @var ?LayoutPreProcessorInterface
 	 */
 	private ?LayoutPreProcessorInterface $preProcessor;
 
@@ -51,8 +51,8 @@ class Layout implements LayoutInterface
 	/**
 	 * Constructor method.
 	 * @param string $path The path of the layout.
-	 * @param null|mixed $data The data the layout needs to render.
-	 * @param null|LayoutPreProcessorInterface $preProcessor The preprocessor of the layout.
+	 * @param ?mixed $data The data the layout needs to render.
+	 * @param ?LayoutPreProcessorInterface $preProcessor The preprocessor of the layout.
 	 */
 	public function __construct( string $path, $data = null, ?LayoutPreProcessorInterface $preProcessor = null )
 	{
