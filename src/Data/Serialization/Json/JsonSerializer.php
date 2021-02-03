@@ -2,6 +2,7 @@
 namespace CodeKandis\Pharty\Data\Serialization\Json;
 
 use CodeKandis\JsonCodec\JsonDecoder;
+use CodeKandis\JsonCodec\JsonDecoderOptions;
 use CodeKandis\JsonCodec\JsonEncoder;
 use CodeKandis\JsonCodec\JsonEncoderOptions;
 use CodeKandis\Pharty\Annotations\AnnotationReaderInstantiationFailedException;
@@ -198,16 +199,19 @@ class JsonSerializer implements JsonSerializerInterface
 	/**
 	 * @inheritDoc
 	 */
-	public function serialize( $data ): string
+	public function serialize( $data, JsonEncoderOptions $options = null ): string
 	{
 		try
 		{
 			return ( new JsonEncoder() )
 				->encode(
 					$this->transformObject( $data ),
-					new JsonEncoderOptions(
+					( new JsonEncoderOptions(
 						JsonEncoderOptions::PRESERVE_ZERO_FRACTION
-					)
+					) )
+						->set(
+							$options ?? new JsonEncoderOptions( JsonEncoderOptions::NONE )
+						)
 				);
 		}
 		catch ( SerializationContractNotFoundException
@@ -324,13 +328,16 @@ class JsonSerializer implements JsonSerializerInterface
 	/**
 	 * @inheritDoc
 	 */
-	public function deserialize( string $data, string $class ): object
+	public function deserialize( string $data, string $class, JsonDecoderOptions $options = null ): object
 	{
 		try
 		{
 			return $this->retransformObject(
 				( new JsonDecoder() )
-					->decode( $data ),
+					->decode(
+						$data,
+						$options ?? new JsonDecoderOptions( JsonDecoderOptions::NONE )
+					),
 				$class
 			);
 		}
