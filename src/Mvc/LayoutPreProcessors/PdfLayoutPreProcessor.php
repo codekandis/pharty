@@ -17,7 +17,7 @@ class PdfLayoutPreProcessor extends LayoutPreProcessor
 	 */
 	public function __construct( int $responseStatusCode = HttpResponseStatusCode::OK )
 	{
-		parent::__construct( 'application/octet-pdf; charset=binary', $responseStatusCode );
+		parent::__construct( 'application/pdf; charset=binary', $responseStatusCode );
 	}
 
 	/**
