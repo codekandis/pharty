@@ -2,6 +2,7 @@
 namespace CodeKandis\Pharty\Mvc;
 
 use CodeKandis\Pharty\Http\HttpMethod;
+use function strtok;
 
 /**
  * Represents the base class of all applications.
@@ -79,7 +80,7 @@ abstract class ApplicationAbstract implements ApplicationInterface
 	private function executeRoutedController(): void
 	{
 		$requestMethod = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_METHOD', HttpMethod::GET );
-		$requestUri    = $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_URI', '/' );
+		$requestUri    = strtok( $this->getEnvironment()->getHttpData()->getServer()->getDefaulted( 'REQUEST_URI', '/' ), '?' );
 		/**
 		 * @var ResolvedRouteInterface $resolvedRoute
 		 */
